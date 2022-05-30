@@ -1,0 +1,40 @@
+package com.example.roomrentalapplication.data.remote
+
+import com.example.roomrentalapplication.data.remote.api.model.CommonResponse
+import com.example.roomrentalapplication.data.remote.api.model.customer.CustomerPropertyResponse
+import com.example.roomrentalapplication.data.remote.api.model.property.PropertyItemResponse
+import com.example.roomrentalapplication.data.remote.api.model.property.PropertyResponse
+import com.example.roomrentalapplication.data.remote.api.model.room.RoomResponse
+import com.example.roomrentalapplication.data.remote.api.model.signin.request.SignInRequestDto
+import com.example.roomrentalapplication.data.remote.api.model.signin.response.SignInResponseDto
+import com.example.roomrentalapplication.data.remote.api.model.signup.request.SignUpRequestDto
+import retrofit2.Response
+import retrofit2.http.*
+
+interface ApiService {
+
+    @POST("api/auth/login")
+    suspend fun signIn(@Body signInRequestDto: SignInRequestDto): Response<SignInResponseDto>
+
+    @POST("api/auth/register")
+    suspend fun signUp(@Body signUpRequestDto: SignUpRequestDto): Response<CommonResponse>
+
+    @GET("api/properties")
+    suspend fun getAllProperty(): Response<PropertyResponse>
+
+    @GET("api/properties/{id}")
+    suspend fun getPropertyById(@Path("id") id: Int): Response<PropertyItemResponse>
+
+    @GET("api/rooms/priceMonth/{propertyId}")
+    suspend fun getRoomsByPropertyId(@Path("propertyId") propertyId: Int): Response<RoomResponse>
+
+    @GET("api/customer/{id}")
+    suspend fun getCustomerById(@Path("id") customerId: Int): Response<CustomerPropertyResponse>
+
+    @GET("api/properties/getByCityTypeName")
+    suspend fun getRoomsByPropertyWithName(
+        @Query("city") cityName: String,
+        @Query("typeId") typeId: Int,
+        @Query("name") name: String
+    ): Response<PropertyResponse>
+}

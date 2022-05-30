@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.roomrentalapplication.ui.navigationcontainer.MainNavigationContainerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/clContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="86dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/babyBlue"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_baseline_meeting_room_24"
+            android:tint="@color/babyBlue"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/bottomNavigationC"
+            app:layout_constraintEnd_toEndOf="@id/bottomNavigationC"
+            app:layout_constraintStart_toStartOf="@id/bottomNavigationC"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnProperty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="86dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/babyBlue"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_property"
+            android:tint="@color/babyBlue"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/bottomNavigationC"
+            app:layout_constraintEnd_toEndOf="@id/bottomNavigationC"
+            app:layout_constraintStart_toStartOf="@id/bottomNavigationC"
+            tools:ignore="ContentDescription" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/bottomNavigationC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/babyBlue"
+                android:clickable="true"
+                android:contentDescription="@string/v1_add_listing"
+                android:focusable="true"
+                android:src="@drawable/ic_baseline_add_24"
+                android:tint="@color/babyBlue"
+                app:fabSize="normal"
+                app:layout_anchor="@id/bottomAppbar" />
+
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottomAppbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="@dimen/_40dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                app:fabCradleMargin="@dimen/_16dp"
+                app:fabCradleRoundedCornerRadius="@dimen/_16dp"
+                app:fabCradleVerticalOffset="@dimen/_10dp">
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottomNavigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:background="@drawable/bg_rectangle_transparent_radius_6dp"
+                    android:fitsSystemWindows="true"
+                    app:itemHorizontalTranslationEnabled="false"
+                    app:itemIconSize="@dimen/_24dp"
+                    app:itemIconTint="@drawable/selector_dynamic_color_bottom_naviation_bar"
+                    app:itemRippleColor="@null"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:menu="@menu/menu_navigation"
+                    tools:ignore="SmallSp" />
+            </com.google.android.material.bottomappbar.BottomAppBar>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpContainer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_0dp"
+            android:layout_gravity="top"
+            android:layout_marginBottom="@dimen/_40dp_negative"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@id/bottomNavigationC"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

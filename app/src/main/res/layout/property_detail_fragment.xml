@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.roomrentalapplication.ui.property_fragment.detail.PropertyDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.property_fragment.detail.PropertyDetailFragment">
+
+        <include
+            android:id="@+id/toolbarId"
+            layout="@layout/layout_toolbar_common"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_0dp"
+            android:background="@drawable/bg_common_grey_top_round_16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbarId">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_0dp"
+                    android:layout_margin="@dimen/margin_16dp"
+                    app:cardCornerRadius="@dimen/margin_16dp"
+                    app:layout_constraintDimensionRatio="2:1"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:id="@+id/vpProperty"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <include
+                            android:id="@+id/lauoutItemRating"
+                            layout="@layout/layout_rating_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8dp"
+                            app:data="@{data.stateRatingValue}"
+                            app:layout_constraintBottom_toBottomOf="@id/vpProperty"
+                            app:layout_constraintStart_toStartOf="@id/vpProperty" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <me.relex.circleindicator.CircleIndicator3
+                    android:id="@+id/indicatorLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_10dp"
+                    android:layout_margin="@dimen/margin_16dp"
+                    app:ci_drawable="@drawable/bg_dot_indicator"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cvImage" />
+
+                <TextView
+                    android:id="@+id/tvNameProperty"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:ellipsize="end"
+                    android:letterSpacing="0.02"
+                    android:maxLines="1"
+                    android:text="@{data.data.propertyName}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/cvImage"
+                    app:layout_constraintStart_toStartOf="@id/cvImage"
+                    app:layout_constraintTop_toBottomOf="@id/indicatorLayout"
+                    tools:text="Firefly Studio Apartment" />
+
+                <LinearLayout
+                    android:id="@+id/linearContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_16dp"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@id/tvNameProperty">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1dp"
+                        android:background="@color/textDim" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_8dp">
+
+                        <ImageView
+                            android:id="@+id/ivAvatarLandlord"
+                            android:layout_width="@dimen/_48dp"
+                            android:layout_height="@dimen/_48dp"
+                            android:src="@drawable/avatar1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:id="@+id/tvNameLandlord"
+                            bindTextUserName="@{data.stateCustomerData.customerName}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toTopOf="@id/tvLandlord"
+                            app:layout_constraintStart_toEndOf="@id/ivAvatarLandlord"
+                            app:layout_constraintTop_toTopOf="@id/ivAvatarLandlord"
+                            tools:text="Jenny Wilson" />
+
+                        <TextView
+                            android:id="@+id/tvLandlord"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/v1_landlord"
+                            app:layout_constraintBottom_toBottomOf="@id/ivAvatarLandlord"
+                            app:layout_constraintStart_toStartOf="@id/tvNameLandlord"
+                            app:layout_constraintTop_toBottomOf="@id/tvNameLandlord" />
+
+                        <ImageView
+                            android:id="@+id/ivPhone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_8dp"
+                            android:src="@drawable/ic_outline_phone_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="ContentDescription" />
+
+                        <ImageView
+                            android:id="@+id/ivMess"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_32dp"
+                            android:src="@drawable/ic_baseline_message_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/ivPhone"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="ContentDescription" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1dp"
+                        android:background="@color/textDim" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvWhere"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:text="@string/v1_where_you_ll_be"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16sp"
+                    app:layout_constraintStart_toStartOf="@id/linearContact"
+                    app:layout_constraintTop_toBottomOf="@id/linearContact" />
+
+                <ImageView
+                    android:id="@+id/ivLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:src="@drawable/ic_location"
+                    app:layout_constraintStart_toStartOf="@id/tvWhere"
+                    app:layout_constraintTop_toBottomOf="@id/tvWhere"
+                    app:tint="@color/textHintColor"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16dp"
+                    android:autoLink="map"
+                    android:text="@{data.data.address}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivLocation"
+                    app:layout_constraintTop_toTopOf="@id/ivLocation"
+                    tools:text="House: 28, A Block, Madison Ave, New York" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_0dp"
+                    android:layout_margin="@dimen/margin_16dp"
+                    app:cardCornerRadius="@dimen/margin_16dp"
+                    app:cardElevation="@dimen/_1dp"
+                    app:layout_constraintDimensionRatio="2:0.75"
+                    app:layout_constraintTop_toBottomOf="@id/ivLocation"
+                    tools:ignore="ContentDescription">
+
+                    <ImageView
+                        android:id="@+id/ivAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_map" />
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    android:id="@+id/lineBottomMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1dp"
+                    android:layout_marginHorizontal="@dimen/_16sp"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:background="@color/textDim"
+                    app:layout_constraintTop_toBottomOf="@id/cvAddress" />
+
+                <TextView
+                    android:id="@+id/tvTitleDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:text="@string/v1_properties_details"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16sp"
+                    app:layout_constraintStart_toStartOf="@id/linearContact"
+                    app:layout_constraintTop_toBottomOf="@id/lineBottomMap" />
+
+                <com.example.roomrentalapplication.ui.common.ShowMoreTextView
+                    android:id="@+id/tvShowMore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:text="@{data.data.description}"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitleDetail"
+                    app:showLessText="@string/v1_see_less"
+                    app:showLessTextColor="@color/dimGray"
+                    app:showMoreText="@string/v1_see_more"
+                    app:showMoreTextColor="@color/dimGray"
+                    app:showingLine="3"
+                    tools:text="This is campain to support our Vietnamese" />
+
+                <TextView
+                    android:id="@+id/tvListRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:text="@string/v1_rooms"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16sp"
+                    app:layout_constraintStart_toStartOf="@id/linearContact"
+                    app:layout_constraintTop_toBottomOf="@id/tvShowMore" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvRoom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvListRoom"
+                    tools:listitem="@layout/item_layout_room" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_10dp"
+                    app:layout_constraintTop_toBottomOf="@id/rvRoom" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

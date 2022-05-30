@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.roomrentalapplication.data.remote.api.model.room.RoomItem" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8dp"
+        app:cardCornerRadius="@dimen/margin_16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_16dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvRoom"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="@dimen/_0dp"
+                app:cardCornerRadius="@dimen/_8dp"
+                app:cardElevation="@dimen/_0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@id/guideline5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivRoom"
+                    loadNormalImage="@{data.images.get(0).url}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/babyBlue"
+                    android:scaleType="centerCrop"
+                    tools:ignore="ContentDescription" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="78dp"
+                app:layout_constraintGuide_percent="0.3" />
+
+            <TextView
+                android:id="@+id/tvNameRoom"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{data.roomName}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/ivBedRoom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline5"
+                app:layout_constraintTop_toTopOf="@id/cvRoom"
+                tools:text="889 Palmerston Ave, Winnipeg" />
+
+            <ImageView
+                android:id="@+id/ivBedRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_bed_24"
+                app:layout_constraintBottom_toTopOf="@id/tvPrice"
+                app:layout_constraintEnd_toStartOf="@id/tvNumberBedrooms"
+                app:layout_constraintStart_toStartOf="@id/tvNameRoom"
+                app:layout_constraintTop_toBottomOf="@id/tvNameRoom"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvNumberBedrooms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@{@string/v1_bed_room(data.bedrooms)}"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/ivBedRoom"
+                app:layout_constraintStart_toEndOf="@id/ivBedRoom"
+                app:layout_constraintTop_toTopOf="@id/ivBedRoom" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.7" />
+
+            <ImageView
+                android:id="@+id/ivSquare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_crop_square_24"
+                app:layout_constraintEnd_toStartOf="@id/tvSquare"
+                app:layout_constraintStart_toEndOf="@id/guideline6"
+                app:layout_constraintTop_toTopOf="@id/ivBedRoom"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvSquare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@{@string/v1_room_sqrt(data.size)}"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/ivSquare"
+                app:layout_constraintStart_toEndOf="@id/ivSquare"
+                app:layout_constraintTop_toTopOf="@id/ivSquare" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/v1_room_price(data.monthPrice)}"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/cvRoom"
+                app:layout_constraintStart_toStartOf="@id/ivBedRoom"
+                app:layout_constraintTop_toBottomOf="@id/ivBedRoom"
+                tools:text="$756/mo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
