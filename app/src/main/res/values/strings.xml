@@ -39,7 +39,7 @@
     <string name="v1_we_have_a_solution_for_every_needs">We have a solution for every needs</string>
     <string name="v1_discover_our_most_popular_cities">Discover our most popular cities</string>
     <string name="v1_the_best_solutions_in_the_coolest_cities_you_just_have_to_make_a_reservation">The best solutions in the coolest cities, you just have to make a reservation</string>
-    <string name="v1_property">Properties</string>
+    <string name="v1_properties">Properties</string>
     <string name="v1_account">Account</string>
     <string name="v1_setting">Setting</string>
     <string name="v1_listing">Listing</string>
@@ -58,11 +58,19 @@
     <string name="v1_landlord">Landlord</string>
     <string name="v1_where_you_ll_be">Where you\'ll be</string>
     <string name="v1_properties_details">Property Details</string>
-    <string name="v1_details"> Property</string>
+    <string name="v1_property"> Property</string>
+    <string name="v1_details">Details</string>
     <string name="v1_see_more">See more</string>
     <string name="v1_see_less">See less</string>
     <string name="v1_rooms">Rooms</string>
     <string name="v1_bed_room">%s Bedrooms</string>
     <string name="v1_room_sqrt">%s sqft</string>
     <string name="v1_room_price">$%s/mo</string>
+    <string name="v1_page_current_total">%d/%d</string>
+    <string name="v1_night_price">$%.2f</string>
+    <string name="v1_book_now">Book now</string>
+    <string name="v1_night">/night</string>
+    <string name="v1_lake_view_apartment">Lake View Apartment</string>
+    <string name="v1_view">View</string>
+    <string name="v1_price">Price</string>
 </resources>

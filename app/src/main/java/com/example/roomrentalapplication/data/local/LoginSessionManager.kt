@@ -3,6 +3,7 @@ package com.example.roomrentalapplication.data.local
 import android.content.SharedPreferences
 import androidx.core.content.edit
 import com.example.roomrentalapplication.data.AppConstant
+import com.example.roomrentalapplication.data.remote.api.model.customer.CustomerProperty
 import com.example.roomrentalapplication.data.remote.api.model.refreshtoken.RefreshAuthenticationResult
 import com.example.roomrentalapplication.data.remote.api.model.signin.response.LoginAuthenticator
 import com.example.roomrentalapplication.utils.LogUtils
@@ -19,6 +20,7 @@ class LoginSessionManager @Inject constructor(private val sharedPreferences: Sha
         private const val KEY_REMEMBER_CHECKED = "key_remember_checked"
         private const val KEY_USERNAME_LOGGED_IN = "key_username_logged_in"
         private const val KEY_PASSWORD_LOGGED_IN = "key_password_logged_in"
+        private const val CUSTOMER_INFO = "CUSTOMER_INFO"
     }
 
     internal fun saveUserInfo(username: String, password: String) =
@@ -28,7 +30,8 @@ class LoginSessionManager @Inject constructor(private val sharedPreferences: Sha
             putBoolean(KEY_REMEMBER_CHECKED, true)
         }.commit()
 
-    internal fun isRememberLogin(): Boolean = sharedPreferences.getBoolean(KEY_REMEMBER_CHECKED, false)
+    internal fun isRememberLogin(): Boolean =
+        sharedPreferences.getBoolean(KEY_REMEMBER_CHECKED, false)
 
     internal fun clearUserInfo() =
         sharedPreferences.edit().apply {
@@ -55,6 +58,7 @@ class LoginSessionManager @Inject constructor(private val sharedPreferences: Sha
             null
         }
     }
+
     internal fun updateNewToken(newToken: RefreshAuthenticationResult?) {
         newToken?.let {
             val oldToken = getLoginAuthenticator()
@@ -73,6 +77,7 @@ class LoginSessionManager @Inject constructor(private val sharedPreferences: Sha
             }
         }
     }
+
     internal fun getTokenAuthorizationRequest(): String? {
         return getLoginAuthenticator()?.jwtToken
     }
@@ -80,9 +85,29 @@ class LoginSessionManager @Inject constructor(private val sharedPreferences: Sha
     internal fun clearLoginToken() {
         sharedPreferences.edit(commit = true) {
             putString(KEY_TOKEN_ACCESS, null)
+            putString(CUSTOMER_INFO, null)
         }
     }
+
     internal fun getRefreshToken(): String? = getLoginAuthenticator()?.refreshToken?.token
+
+    internal fun saveCustomer(customerProperty: CustomerProperty?): Unit {
+        customerProperty?.let {
+            val customer = Gson().toJson(it)
+            sharedPreferences.apply {
+                edit(commit = true) {
+                    putString(CUSTOMER_INFO, customer).apply()
+                }
+            }
+        }
+    }
+
+    internal fun getCustomerLocal(): CustomerProperty? {
+        sharedPreferences.getString(CUSTOMER_INFO, null)?.apply {
+            return Gson().fromJson(this, CustomerProperty::class.java)
+        }
+        return null
+    }
 
     internal fun isLoggedIn(): Boolean = getTokenAuthorizationRequest()?.isNotBlank() ?: false
 }

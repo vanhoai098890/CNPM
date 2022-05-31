@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.roomrentalapplication.R
 import com.example.roomrentalapplication.data.AppConstant
+import com.example.roomrentalapplication.data.remote.api.model.customer.CustomerProperty
 import com.example.roomrentalapplication.databinding.ItemPersonalContentFunctionBinding
 import com.example.roomrentalapplication.databinding.LayoutItemPersonalTitleBinding
 import com.example.roomrentalapplication.databinding.LayoutItemTopPersonalBinding
@@ -20,6 +21,7 @@ class PersonalAdapter : BaseListAdapter<PersonalFunctionStatic>() {
     }
 
     internal var onLogoutAction: () -> Unit = {}
+    internal var customerInfo: CustomerProperty? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseItemViewHolder {
         return when (viewType) {
@@ -116,6 +118,9 @@ class PersonalAdapter : BaseListAdapter<PersonalFunctionStatic>() {
         BaseItemViewHolder(binding.root) {
 
         override fun bind(data: PersonalFunctionStatic) {
+            customerInfo?.apply {
+                binding.data = this
+            }
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.roomrentalapplication.extensions
 import android.os.SystemClock
 import android.util.TypedValue
 import android.view.View
+
 fun View.setSafeOnClickListener(delayInterval: Long = 1000, onSafeClick: () -> Unit) {
     var timeNow = 0L
     setOnClickListener {

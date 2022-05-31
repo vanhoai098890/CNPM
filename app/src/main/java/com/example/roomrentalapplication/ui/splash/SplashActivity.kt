@@ -24,9 +24,4 @@ class SplashActivity : BaseActivity() {
         )
         super.onCreate(savedInstanceState)
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        LogUtils.d("onDestroy")
-    }
 }

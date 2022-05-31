@@ -1,5 +1,7 @@
 package com.example.roomrentalapplication.data
 
+import androidx.viewpager2.widget.CompositePageTransformer
+
 object AppConstant {
     const val PREF_NAME: String = "NRent_pref"
 
@@ -16,4 +18,14 @@ object AppConstant {
     const val EMAIL_PATTERN = "\\w+@\\w+(\\.\\w){1,2}"
     const val PHONE_PATTERN = "0\\d{0,10}"
     const val ZERO = 0
+    const val DEFAULT_INTERVAL = 1000L
+
+    val COMPOSITE_VIEWPAGER = CompositePageTransformer().apply {
+        addTransformer { page, position ->
+            val r = 1 - kotlin.math.abs(position)
+            page.scaleY = 0.65f + r * 0.35f
+            page.scaleX = 0.65f + r * 0.35f
+            page.alpha = 0.4f + r * 0.6f
+        }
+    }
 }

@@ -66,7 +66,7 @@ class PropertyFragment : BaseFragment() {
                 backButton.setSafeOnClickListener {
                     handleBackPressed()
                 }
-                tvCenter.text = context?.getString(R.string.v1_property)
+                tvCenter.text = context?.getString(R.string.v1_properties)
             }
             arguments?.apply {
                 getString(SEARCH_TYPE)?.let { type ->

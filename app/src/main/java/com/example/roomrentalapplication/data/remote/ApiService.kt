@@ -5,9 +5,11 @@ import com.example.roomrentalapplication.data.remote.api.model.customer.Customer
 import com.example.roomrentalapplication.data.remote.api.model.property.PropertyItemResponse
 import com.example.roomrentalapplication.data.remote.api.model.property.PropertyResponse
 import com.example.roomrentalapplication.data.remote.api.model.room.RoomResponse
+import com.example.roomrentalapplication.data.remote.api.model.room.RoomSavedRequest
 import com.example.roomrentalapplication.data.remote.api.model.signin.request.SignInRequestDto
 import com.example.roomrentalapplication.data.remote.api.model.signin.response.SignInResponseDto
 import com.example.roomrentalapplication.data.remote.api.model.signup.request.SignUpRequestDto
+import com.example.roomrentalapplication.data.remote.api.model.status_saved.StatusSavedResponse
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -37,4 +39,19 @@ interface ApiService {
         @Query("typeId") typeId: Int,
         @Query("name") name: String
     ): Response<PropertyResponse>
+
+    @POST("api/saved_rooms")
+    suspend fun saveRoom(
+        @Body roomSavedRequest: RoomSavedRequest
+    ): Response<CommonResponse>
+
+    @HTTP(method = "DELETE", path = "api/saved_rooms", hasBody = true)
+    suspend fun deleteRoom(
+        @Body roomSavedRequest: RoomSavedRequest
+    ): Response<CommonResponse>
+
+    @GET("api/saved_rooms/is_existed")
+    suspend fun getStatusSavedRoom(
+        @Query("customerId") customerId: Int, @Query("roomId") roomId: Int
+    ): Response<StatusSavedResponse>
 }

@@ -109,9 +109,9 @@
 
                         <ImageView
                             android:id="@+id/ivAvatarLandlord"
+                            bindImageAvatar="@{data.data.customerId}"
                             android:layout_width="@dimen/_48dp"
                             android:layout_height="@dimen/_48dp"
-                            android:src="@drawable/avatar1"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             tools:ignore="ContentDescription" />
@@ -208,7 +208,7 @@
                     app:cardCornerRadius="@dimen/margin_16dp"
                     app:cardElevation="@dimen/_1dp"
                     app:layout_constraintDimensionRatio="2:0.75"
-                    app:layout_constraintTop_toBottomOf="@id/ivLocation"
+                    app:layout_constraintTop_toBottomOf="@id/tvAddress"
                     tools:ignore="ContentDescription">
 
                     <ImageView
@@ -218,6 +218,19 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_map" />
                 </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/btnViewMap"
+                    style="@style/buttonMapStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_40dp"
+                    android:layout_margin="@dimen/_8dp"
+                    android:text="@string/v1_view"
+                    android:elevation="@dimen/_16dp"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@null"
+                    app:layout_constraintBottom_toBottomOf="@id/cvAddress"
+                    app:layout_constraintEnd_toEndOf="@id/cvAddress" />
 
                 <View
                     android:id="@+id/lineBottomMap"

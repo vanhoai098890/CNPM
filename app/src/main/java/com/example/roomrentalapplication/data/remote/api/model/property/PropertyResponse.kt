@@ -1,7 +1,9 @@
 package com.example.roomrentalapplication.data.remote.api.model.property
 
+import android.os.Parcelable
 import com.example.roomrentalapplication.data.remote.api.model.CommonResponse
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class PropertyResponse(
     @SerializedName("data")
@@ -25,8 +27,9 @@ data class PropertyItem(
     val lon: Double? = null
 )
 
+@Parcelize
 data class ImageItem(
     val id: Int? = null,
     val url: String? = null,
     val thumbnail: String? = null
-)
+):Parcelable

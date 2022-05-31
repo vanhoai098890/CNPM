@@ -9,8 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.CompositePageTransformer
 import com.example.roomrentalapplication.R
+import com.example.roomrentalapplication.data.AppConstant.COMPOSITE_VIEWPAGER
+import com.example.roomrentalapplication.data.remote.api.model.room.RoomItem
 import com.example.roomrentalapplication.databinding.PropertyDetailFragmentBinding
 import com.example.roomrentalapplication.extensions.onSuccess
 import com.example.roomrentalapplication.extensions.setSafeOnClickListener
@@ -47,21 +48,9 @@ class PropertyDetailFragment : BaseFragment() {
             }
         }
     }
-    private val roomDialog: RoomDialogFragment by lazy {
-        RoomDialogFragment.newInstance(1)
-    }
 
-    private fun showDialog(roomId: Int?) {
-        roomDialog.show(parentFragmentManager, null)
-    }
-
-    private val composite = CompositePageTransformer().apply {
-        addTransformer { page, position ->
-            val r = 1 - kotlin.math.abs(position)
-            page.scaleY = 0.65f + r * 0.35f
-            page.scaleX = 0.65f + r * 0.35f
-            page.alpha = 0.4f + r * 0.6f
-        }
+    private fun showDialog(roomItem: RoomItem?) {
+        RoomDialogFragment.newInstance(roomItem).show(parentFragmentManager, null)
     }
 
     override fun onCreateView(
@@ -81,13 +70,13 @@ class PropertyDetailFragment : BaseFragment() {
     private fun initViews() {
         binding.apply {
             vpProperty.apply {
-                setPageTransformer(composite)
+                setPageTransformer(COMPOSITE_VIEWPAGER)
                 offscreenPageLimit = 3
                 clipChildren = false
                 clipToPadding = false
             }
             toolbarId.apply {
-                tvCenter.text = getString(R.string.v1_details)
+                tvCenter.text = getString(R.string.v1_property)
                 backButton.setSafeOnClickListener {
                     handleBackPressed()
                 }
@@ -108,11 +97,13 @@ class PropertyDetailFragment : BaseFragment() {
                     )
                 )
             }
-            ivAddress.setSafeOnClickListener {
+            btnViewMap.setSafeOnClickListener {
                 val intent = Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("http://maps.google.com/maps?daddr=${viewModel.data.value.lon},${viewModel.data.value.lat}")
-                )
+                    Uri.parse("geo:${viewModel.data.value.lat},${viewModel.data.value.lon}?z=0&q=${viewModel.data.value.address}")
+                ).apply {
+                    setPackage("com.google.android.apps.maps")
+                }
                 startActivity(intent)
             }
             rvRoom.apply {

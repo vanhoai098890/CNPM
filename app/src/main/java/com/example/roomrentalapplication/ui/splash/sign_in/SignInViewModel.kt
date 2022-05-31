@@ -75,6 +75,7 @@ class SignInViewModel @Inject constructor(
                         }
                     }.onSuccess {
                         loginSessionManager.saveLoginToken(it.loginAuthenticator)
+                        loginSessionManager.saveCustomer(it.loginAuthenticator.customer)
                         navigateToHomeStatus.value = true
                     }.launchIn(viewModelScope)
             }

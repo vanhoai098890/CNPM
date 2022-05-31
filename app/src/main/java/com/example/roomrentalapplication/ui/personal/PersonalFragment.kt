@@ -26,6 +26,7 @@ class PersonalFragment() : BaseFragment() {
             onLogoutAction = {
                 logoutDialog.show(parentFragmentManager, null)
             }
+            customerInfo = viewModel.getCustomerInfo()
         }
     }
     private val logoutDialog: LogoutDialog by lazy {

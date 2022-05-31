@@ -1,6 +1,9 @@
 package com.example.roomrentalapplication.utils.bindingadapter
 
 import android.content.res.Resources
+import android.os.Build
+import android.text.Html
+import android.text.Html.FROM_HTML_MODE_LEGACY
 import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -87,4 +90,15 @@ fun TextView.bindTextUserName(name: String?) {
         }
     }
     text = tempText
+}
+
+@BindingAdapter("bindHtmlText")
+fun TextView.bindHtmlText(name: String?) {
+    name?.apply {
+        text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(name, FROM_HTML_MODE_LEGACY)
+        } else {
+            Html.fromHtml(name)
+        }
+    }
 }

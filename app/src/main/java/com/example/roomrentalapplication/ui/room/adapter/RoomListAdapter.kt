@@ -9,7 +9,7 @@ import com.example.roomrentalapplication.ui.base.BaseListAdapter
 
 class RoomListAdapter : BaseListAdapter<RoomItem>() {
 
-    var onClick: (Int?) -> Unit = {}
+    var onClick: (RoomItem?) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseItemViewHolder {
         return RoomViewHolder(
@@ -26,7 +26,7 @@ class RoomListAdapter : BaseListAdapter<RoomItem>() {
         override fun bind(data: RoomItem) {
             binding.data = data
             binding.root.setSafeOnClickListener {
-                onClick(data.roomId)
+                onClick(data)
             }
         }
     }

@@ -10,6 +10,7 @@ import android.view.Window
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
+import com.example.roomrentalapplication.R
 import com.example.roomrentalapplication.utils.LogUtils
 
 abstract class BaseDialogFragment : DialogFragment() {
@@ -33,6 +34,7 @@ abstract class BaseDialogFragment : DialogFragment() {
                 setDimAmount(dimValue)
                 // Fix color of status bar change to black
                 addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                attributes.windowAnimations = R.style.customDialog
             }
             setCancelable(false)
             setCanceledOnTouchOutside(false)
