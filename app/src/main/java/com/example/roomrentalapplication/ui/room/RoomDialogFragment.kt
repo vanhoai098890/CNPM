@@ -18,8 +18,8 @@ import com.example.roomrentalapplication.extensions.setSafeOnClickListener
 import com.example.roomrentalapplication.ui.base.BaseDialogFragment
 import com.example.roomrentalapplication.ui.base.BaseFragment
 import com.example.roomrentalapplication.ui.common.ImageFragment
+import com.example.roomrentalapplication.ui.date_dialog.DateRentDialog
 import com.example.roomrentalapplication.ui.property_fragment.adapter.PropertyImageAdapter
-import com.example.roomrentalapplication.ui.property_fragment.detail.PropertyDetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -32,6 +32,7 @@ class RoomDialogFragment : BaseDialogFragment() {
     private lateinit var binding: LayoutRoomDialogBinding
     private lateinit var animSelect: Animation
     private var totalSizeImage: Int? = null
+    private lateinit var dateRentDialog: DateRentDialog
 
     override fun setContentDialog(dialog: Dialog) {
         dialog.apply {
@@ -45,6 +46,7 @@ class RoomDialogFragment : BaseDialogFragment() {
     override fun initListeners(dialog: Dialog) {
         arguments?.apply {
             this.getParcelable<RoomItem>(ROOM)?.let { roomItem ->
+                dateRentDialog = DateRentDialog.newInstance(roomItem)
                 binding.apply {
                     data = roomItem
                     viewModel = myViewModel
@@ -89,13 +91,16 @@ class RoomDialogFragment : BaseDialogFragment() {
                     myViewModel.getStatusSaved(roomItem.roomId)
                     btnBook.setSafeOnClickListener {
                         dismiss()
-                        newInstance(roomItem).show(parentFragmentManager, null)
+                        dateRentDialog.show(parentFragmentManager, null)
                     }
                 }
                 lifecycleScope.launchWhenStarted {
                     launch {
                         myViewModel.stateFavourite.collect {
                             binding.ivFavourite.isSelected = it
+                            if (it) {
+                                binding.ivFavourite.startAnimation(animSelect)
+                            }
                         }
                     }
                 }

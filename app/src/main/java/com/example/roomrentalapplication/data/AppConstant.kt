@@ -19,6 +19,7 @@ object AppConstant {
     const val PHONE_PATTERN = "0\\d{0,10}"
     const val ZERO = 0
     const val DEFAULT_INTERVAL = 1000L
+    const val FORMAT_DATE = "yyyy-MM-dd"
 
     val COMPOSITE_VIEWPAGER = CompositePageTransformer().apply {
         addTransformer { page, position ->

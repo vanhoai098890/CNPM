@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.roomrentalapplication.ui.date_dialog.DateRentViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_0dp"
+            android:background="@drawable/bg_common_dialog_round_16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1.8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <ImageView
+                android:id="@+id/ivClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_16dp"
+                android:src="@drawable/ic_close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvDateTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16dp"
+                android:text="@string/v1_dates"
+                android:textColor="@color/blackRussian"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RelativeLayout
+                android:id="@+id/relativeCalendar"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="@dimen/_0dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:layout_marginBottom="@dimen/_8dp_negative"
+                app:layout_constraintBottom_toTopOf="@id/guideline7"
+                app:layout_constraintDimensionRatio="1:1.2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDateTitle">
+
+                <include
+                    android:id="@+id/layoutCalendar"
+                    layout="@layout/layout_item_calendar_month"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnClear"
+                style="@style/commonButtonCornerMain"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_44dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_8dp_negative"
+                android:text="@string/v1_clear"
+                android:textAllCaps="false"
+                android:textColor="@color/blackRussian"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/relativeCalendar" />
+
+            <TextView
+                android:id="@+id/tvTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8dp"
+                android:text="@string/v1_total"
+                android:textColor="@color/blackRussian"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/relativeCalendar"
+                app:layout_constraintTop_toBottomOf="@id/btnClear" />
+
+            <TextView
+                android:id="@+id/tvPriceDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:text="@string/v1_price_day"
+                app:layout_constraintStart_toStartOf="@id/tvTotal"
+                app:layout_constraintTop_toBottomOf="@id/tvTotal" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvPriceDay"
+                app:layout_constraintStart_toEndOf="@id/tvPriceDay"
+                tools:text="$1000" />
+
+            <TextView
+                android:id="@+id/tvDayRentTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:text="@string/v1_days_rent_title"
+                app:layout_constraintStart_toStartOf="@id/tvTotal"
+                app:layout_constraintTop_toBottomOf="@id/tvPriceDay" />
+
+            <TextView
+                android:id="@+id/tvDateRent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/tvDayRentTitle"
+                app:layout_constraintStart_toStartOf="@id/tvPrice"
+                tools:text="X 1" />
+
+            <LinearLayout
+                android:id="@+id/linearBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_common_dialog_round_16dp"
+                android:elevation="@dimen/_8dp"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10dp"
+                android:weightSum="2"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <LinearLayout
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvPriceTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/cambo"
+                        android:textSize="@dimen/_16sp"
+                        android:textStyle="bold"
+                        tools:text="$30" />
+
+                    <TextView
+                        android:id="@+id/tvNights"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/cambo"
+                        tools:text="/ 4 night" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnBook"
+                    style="@style/commonButtonCornerMain"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="@dimen/_44dp"
+                    android:layout_weight="1"
+                    android:enabled="@{data.stateEnablePayButton}"
+                    android:text="@string/v1_pay_now"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blackRussian" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.64" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

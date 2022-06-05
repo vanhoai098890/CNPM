@@ -15,7 +15,9 @@ data class RoomResponse(
 data class RoomItem(
     val roomId: Int?,
     val propertyId: Int?,
+    val priceId: Int?,
     val monthPrice: Double?,
+    val dayPrice: Double?,
     val roomStatusId: Int?,
     val imageStorageId: Int?,
     val bedrooms: Int?,
