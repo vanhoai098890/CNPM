@@ -15,7 +15,9 @@
     <string name="v1_create_account">Create\nAccount</string>
     <string name="v1_name">Name</string>
     <string name="v1_email">Email</string>
+    <string name="v1_email_">Email:</string>
     <string name="v1_phone">Phone</string>
+    <string name="v1_phone_">Phone:</string>
     <string name="v1_remember_password">Remember password</string>
     <string name="v1_wrong_field">* The username or password is incorrect, please try again</string>
     <string name="v1_require_field">* Requires each field to be longer than 6 characters</string>
@@ -69,8 +71,8 @@
     <string name="v1_page_current_total">%d/%d</string>
     <string name="v1_night_price">$%.2f</string>
     <string name="v1_book_now">Book now</string>
-    <string name="v1_night">/night</string>
-    <string name="v1_multi_night">/ %s night</string>
+    <string name="v1_night">/day</string>
+    <string name="v1_multi_night">/ %s days</string>
     <string name="v1_lake_view_apartment">Lake View Apartment</string>
     <string name="v1_view">View</string>
     <string name="v1_price">Price</string>
@@ -98,8 +100,25 @@
     <string name="v1_total">Total</string>
     <string name="v1_price_day">Price/day:</string>
     <string name="v1_days_rent_title">Days rent:</string>
+    <string name="v1_amount_title">Amount:</string>
 <!--    <string name="v1_price_days">%s₫</string>-->
-    <string name="v1_price_days">$%s</string>
+    <string name="v1_price_days">$%.1f</string>
     <string name="v1_date_rent">X %d</string>
     <string name="v1_night_rent">/ %d days</string>
+    <string name="v1_rent">Rent</string>
+    <string name="v1_request_information">Request information</string>
+    <string name="v1_rent_request_information">Information</string>
+    <string name="v1_your_name">Your name:</string>
+    <string name="v1_check_in">Check in:</string>
+    <string name="v1_check_out">Check out:</string>
+    <string name="v1_confirm_checking_info">Checking carefully the information about rent request to make sure you don\'t send them wrong</string>
+    <string name="v1_rent_information">Rent information</string>
+    <string name="v1_deposit">Deposit</string>
+    <string name="v1_thirty_five_percent">(35%)</string>
+    <string name="v1_back_to_home">Back Home</string>
+    <string name="v1_success">Success!</string>
+    <string name="v1_confirmed">Confirmed</string>
+    <string name="v1_failed">Failed</string>
+    <string name="v1_booking_confirmation">You\'ll get an email along with\nyour booking confirmation</string>
+    <string name="v1_failed_confirmation">Something wrong!</string>
 </resources>

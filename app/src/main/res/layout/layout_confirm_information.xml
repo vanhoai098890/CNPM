@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.roomrentalapplication.data.remote.api.model.customer.CustomerProperty" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_0dp"
+            android:background="@drawable/bg_common_dialog_round_16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1.8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <ImageView
+                android:id="@+id/ivClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_16dp"
+                android:src="@drawable/ic_close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvInformationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16dp"
+                android:text="@string/v1_rent_request_information"
+                android:textColor="@color/blackRussian"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvYourNameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_16dp"
+                android:text="@string/v1_your_name"
+                android:textColor="@color/blackRussian"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvInformationTitle" />
+
+            <TextView
+                android:id="@+id/tvYourName"
+                bindTextUserName="@{data.customerName}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:background="@drawable/bg_common_dialog_round_gray_6dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:padding="@dimen/_10dp"
+                app:layout_constraintTop_toBottomOf="@id/tvYourNameTitle"
+                tools:text="Ho Van Hoai" />
+
+            <TextView
+                android:id="@+id/tvEmailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_16dp"
+                android:text="@string/v1_email_"
+                android:textColor="@color/blackRussian"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvYourName" />
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:background="@drawable/bg_common_dialog_round_gray_6dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:padding="@dimen/_10dp"
+                android:text="@{data.email}"
+                app:layout_constraintTop_toBottomOf="@id/tvEmailTitle"
+                tools:text="vanhoai098890@gmail.com" />
+
+            <TextView
+                android:id="@+id/tvPhoneTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_16dp"
+                android:text="@string/v1_phone_"
+                android:textColor="@color/blackRussian"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+
+            <TextView
+                android:id="@+id/tvPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:background="@drawable/bg_common_dialog_round_gray_6dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:padding="@dimen/_10dp"
+                android:text="@{data.phoneNumber}"
+                app:layout_constraintTop_toBottomOf="@id/tvPhoneTitle"
+                tools:text="0367359816" />
+
+            <TextView
+                android:id="@+id/tvRentInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_16dp"
+                android:text="@string/v1_rent_information"
+                android:textColor="@color/blackRussian"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPhone" />
+
+            <ImageView
+                android:id="@+id/ivDayRent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_check_circle_24"
+                app:layout_constraintStart_toStartOf="@id/tvRentInformation"
+                app:layout_constraintTop_toBottomOf="@id/tvRentInformation"
+                app:tint="@color/babyBlue"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvDayRentTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@string/v1_days_rent_title"
+                android:textColor="@color/blackRussian"
+                app:layout_constraintBottom_toBottomOf="@id/ivDayRent"
+                app:layout_constraintStart_toEndOf="@id/ivDayRent"
+                app:layout_constraintTop_toTopOf="@id/ivDayRent" />
+
+            <TextView
+                android:id="@+id/tvDaysRent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvDayRentTitle"
+                app:layout_constraintStart_toStartOf="@id/guideline8"
+                tools:text="2" />
+
+            <ImageView
+                android:id="@+id/ivAmount"
+                android:layout_width="@dimen/_24dp"
+                android:layout_height="@dimen/_24dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_amount"
+                app:layout_constraintStart_toStartOf="@id/ivDayRent"
+                app:layout_constraintTop_toBottomOf="@id/ivDayRent"
+                app:tint="@color/babyBlue"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvAmountTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@string/v1_amount_title"
+                android:textColor="@color/blackRussian"
+                app:layout_constraintBottom_toBottomOf="@id/ivAmount"
+                app:layout_constraintStart_toEndOf="@id/ivAmount"
+                app:layout_constraintTop_toTopOf="@id/ivAmount" />
+
+            <TextView
+                android:id="@+id/tvAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvAmountTitle"
+                app:layout_constraintStart_toStartOf="@id/guideline8"
+                tools:text="$11" />
+
+            <ImageView
+                android:id="@+id/ivCheckIn"
+                android:layout_width="@dimen/_24dp"
+                android:layout_height="@dimen/_24dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_check_in"
+                app:layout_constraintStart_toStartOf="@id/ivAmount"
+                app:layout_constraintTop_toBottomOf="@id/ivAmount"
+                app:tint="@color/babyBlue"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvCheckInTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@string/v1_check_in"
+                android:textColor="@color/blackRussian"
+                app:layout_constraintBottom_toBottomOf="@id/ivCheckIn"
+                app:layout_constraintStart_toEndOf="@id/ivCheckIn"
+                app:layout_constraintTop_toTopOf="@id/ivCheckIn" />
+
+            <TextView
+                android:id="@+id/tvCheckIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvCheckInTitle"
+                app:layout_constraintStart_toStartOf="@id/guideline8"
+                tools:text="$11" />
+
+            <ImageView
+                android:id="@+id/ivCheckOut"
+                android:layout_width="@dimen/_24dp"
+                android:layout_height="@dimen/_24dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_check_out"
+                app:layout_constraintStart_toStartOf="@id/ivCheckIn"
+                app:layout_constraintTop_toBottomOf="@id/ivCheckIn"
+                app:tint="@color/babyBlue"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvCheckOutTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@string/v1_check_out"
+                android:textColor="@color/blackRussian"
+                app:layout_constraintBottom_toBottomOf="@id/ivCheckOut"
+                app:layout_constraintStart_toEndOf="@id/ivCheckOut"
+                app:layout_constraintTop_toTopOf="@id/ivCheckOut" />
+
+            <TextView
+                android:id="@+id/tvCheckOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvCheckOutTitle"
+                app:layout_constraintStart_toStartOf="@id/guideline8"
+                tools:text="$11" />
+
+            <ImageView
+                android:id="@+id/ivDeposit"
+                android:layout_width="@dimen/_24dp"
+                android:layout_height="@dimen/_24dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_deposit"
+                app:layout_constraintStart_toStartOf="@id/ivCheckOut"
+                app:layout_constraintTop_toBottomOf="@id/ivCheckOut"
+                app:tint="@color/babyBlue"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvDepositTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@string/v1_deposit"
+                android:textColor="@color/blackRussian"
+                app:layout_constraintBottom_toBottomOf="@id/ivDeposit"
+                app:layout_constraintStart_toEndOf="@id/ivDeposit"
+                app:layout_constraintTop_toTopOf="@id/ivDeposit" />
+
+            <TextView
+                android:id="@+id/tvDeposit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvDepositTitle"
+                app:layout_constraintStart_toStartOf="@id/guideline8"
+                tools:text="$11" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:text="@string/v1_confirm_checking_info"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@id/btnRequestInfo" />
+
+
+            <Button
+                android:id="@+id/btnRequestInfo"
+                style="@style/commonButtonCornerMain"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_44dp"
+                android:layout_marginBottom="@dimen/_8dp"
+                android:background="@drawable/bg_rectangle_mercury_radius_6dp"
+                android:elevation="@dimen/_8dp"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10dp"
+                android:text="@string/v1_request_information"
+                android:textAllCaps="false"
+                android:textColor="@color/blackRussian"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="427dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.34" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -7,6 +7,8 @@ import com.example.roomrentalapplication.data.remote.api.model.date_rent.DateSta
 import com.example.roomrentalapplication.data.remote.api.model.date_rent.PriceRentResponse
 import com.example.roomrentalapplication.data.remote.api.model.property.PropertyItemResponse
 import com.example.roomrentalapplication.data.remote.api.model.property.PropertyResponse
+import com.example.roomrentalapplication.data.remote.api.model.request_info.RentRequest
+import com.example.roomrentalapplication.data.remote.api.model.request_info.RentResponse
 import com.example.roomrentalapplication.data.remote.api.model.room.RoomResponse
 import com.example.roomrentalapplication.data.remote.api.model.room.RoomSavedRequest
 import com.example.roomrentalapplication.data.remote.api.model.signin.request.SignInRequestDto
@@ -15,7 +17,6 @@ import com.example.roomrentalapplication.data.remote.api.model.signup.request.Si
 import com.example.roomrentalapplication.data.remote.api.model.status_saved.StatusSavedResponse
 import retrofit2.Response
 import retrofit2.http.*
-import java.util.*
 
 interface ApiService {
 
@@ -69,7 +70,7 @@ interface ApiService {
     @GET("api/reservation/furthest_valid_date/{roomId}")
     suspend fun getDateFurthestByRoomId(
         @Path("roomId") roomId: Int,
-        @Query("date") date: Date
+        @Query("from") date: String
     ): Response<DateFurthestResponse>
 
     @GET("api/price/calcPrice/{id}")
@@ -78,4 +79,11 @@ interface ApiService {
         @Query("startDate") startDate: String,
         @Query("endDate") endDate: String,
     ): Response<PriceRentResponse>
+
+
+    @POST("api/reservation")
+    suspend fun requestInformation(
+        @Body rentRequest: RentRequest
+    ): Response<RentResponse>
+
 }

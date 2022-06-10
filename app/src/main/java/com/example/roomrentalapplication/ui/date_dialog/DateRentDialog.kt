@@ -9,24 +9,27 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.roomrentalapplication.R
+import com.example.roomrentalapplication.data.AppConstant
+import com.example.roomrentalapplication.data.remote.api.model.date_rent.DateStatus
 import com.example.roomrentalapplication.data.remote.api.model.room.RoomItem
 import com.example.roomrentalapplication.databinding.LayoutDateRentDialogBinding
 import com.example.roomrentalapplication.extensions.calcDatesWith
+import com.example.roomrentalapplication.extensions.getFormatString
 import com.example.roomrentalapplication.extensions.onSuccess
 import com.example.roomrentalapplication.extensions.setSafeOnClickListener
 import com.example.roomrentalapplication.ui.base.BaseDialogFragment
 import com.example.roomrentalapplication.ui.date_dialog.adapter.MonthAdapter
 import com.example.roomrentalapplication.ui.date_dialog.model.ItemDate
 import com.example.roomrentalapplication.ui.date_dialog.model.MonthEnum
+import com.example.roomrentalapplication.ui.request_info_dialog.RequestInfoDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
+import java.text.SimpleDateFormat
 import java.util.*
 
-@SuppressLint("NotifyDataSetChanged")
+@SuppressLint("NotifyDataSetChanged", "SimpleDateFormat")
 @AndroidEntryPoint
 class DateRentDialog : BaseDialogFragment() {
-    private val viewModel: DateRentViewModel by viewModels()
-    private lateinit var binding: LayoutDateRentDialogBinding
 
     companion object {
         private const val FIRST_DATE = 1
@@ -43,12 +46,17 @@ class DateRentDialog : BaseDialogFragment() {
         }
     }
 
+    private val viewModel: DateRentViewModel by viewModels()
+    private lateinit var binding: LayoutDateRentDialogBinding
     private var mMonth = GregorianCalendar().get(Calendar.MONTH) + 1
     private var mYear = GregorianCalendar().get(Calendar.YEAR)
     private var countBlock = 1
     private val myListDates: MutableList<ItemDate> = mutableListOf()
     private var firstDate: GregorianCalendar? = null
     private var secondDate: GregorianCalendar? = null
+    private var mRoomItem: RoomItem? = null
+    private var mNumberDates = 0
+    private var mTotalPrice = 0.0
 
     private val adapter: MonthAdapter by lazy {
         MonthAdapter().apply {
@@ -59,6 +67,23 @@ class DateRentDialog : BaseDialogFragment() {
                         selectFirstDate(firstDate!!)
                         adapter.notifyDataSetChanged()
                         countBlock += 1
+                        viewModel.getDateFurthest(
+                            mRoomItem?.roomId ?: 0,
+                            SimpleDateFormat(AppConstant.FORMAT_DATE).let { format ->
+                                format.format(
+                                    format.parse(format.format(firstDate!!.time)) ?: Date()
+                                )
+                            }
+                        ).onSuccess { response ->
+                            val date = response.data.split("-").map { itemDate ->
+                                itemDate.toInt()
+                            }
+                            selectSecondDate(
+                                firstDate,
+                                GregorianCalendar(date[0], date[1], date[2]),
+                                false
+                            )
+                        }.launchIn(lifecycleScope)
                     }
                     SECOND_DATE -> {
                         secondDate = GregorianCalendar(mYear, mMonth - 1, it.numberDate.toInt())
@@ -73,18 +98,19 @@ class DateRentDialog : BaseDialogFragment() {
     }
 
     private fun calcPrice() {
-        val numberDates = firstDate!!.calcDatesWith(secondDate!!)
+        mNumberDates = firstDate!!.calcDatesWith(secondDate!!)
         binding.apply {
             tvDateRent.text = getString(
                 R.string.v1_date_rent,
-                numberDates
+                mNumberDates
             )
-            tvNights.text = getString(R.string.v1_night_rent, numberDates)
+            tvNights.text = getString(R.string.v1_night_rent, mNumberDates)
             viewModel.stateEnablePayButton.value = true
             arguments?.apply {
                 getParcelable<RoomItem>(ROOM_ITEM)?.let { roomItem ->
                     viewModel.getPrice(roomItem.priceId ?: 0, firstDate!!, secondDate!!).onSuccess {
-                        tvPriceTotal.text = getString(R.string.v1_price_days, it.price.toString())
+                        tvPriceTotal.text = getString(R.string.v1_price_days, it.price)
+                        mTotalPrice = it.price
                     }.launchIn(lifecycleScope)
                 }
             }
@@ -99,8 +125,9 @@ class DateRentDialog : BaseDialogFragment() {
             data = viewModel
             arguments?.apply {
                 getParcelable<RoomItem>(ROOM_ITEM)?.let { roomItem ->
+                    mRoomItem = roomItem
                     tvPrice.text =
-                        getString(R.string.v1_price_days, (roomItem.dayPrice ?: 0).toString())
+                        getString(R.string.v1_price_days, roomItem.dayPrice ?: 0.0)
                     layoutCalendar.apply {
                         rvMonthView.layoutManager = GridLayoutManager(requireContext(), 7)
                         rvMonthView.adapter = adapter
@@ -136,6 +163,17 @@ class DateRentDialog : BaseDialogFragment() {
                         secondDate = null
                         countBlock = FIRST_DATE
                         initCalendar(mMonth, mYear)
+                    }
+                    btnBook.setSafeOnClickListener {
+                        dismiss()
+                        RequestInfoDialog.newInstance(
+                            roomItem,
+                            mNumberDates,
+                            mTotalPrice,
+                            firstDate?.getFormatString(AppConstant.FORMAT_DATE) ?: "",
+                            secondDate?.getFormatString(AppConstant.FORMAT_DATE) ?: ""
+                        )
+                            .show(parentFragmentManager, null)
                     }
                 }
             }
@@ -199,7 +237,11 @@ class DateRentDialog : BaseDialogFragment() {
                     getParcelable<RoomItem>(ROOM_ITEM).let { roomItem ->
                         viewModel.getDateStatusByRoomId(roomItem?.roomId ?: 0, mMonth, mYear)
                             .onSuccess {
-                                it.data.forEachIndexed { index, dateStatus ->
+                                val setData = HashSet<DateStatus>()
+                                it.data.forEachIndexed { _, dateStatus ->
+                                    setData.add(dateStatus)
+                                }
+                                setData.forEachIndexed { index, dateStatus ->
                                     myListDates[6 + dateOfWeek + index].isEnable =
                                         !dateStatus.status
                                 }
@@ -214,7 +256,11 @@ class DateRentDialog : BaseDialogFragment() {
         adapter.notifyDataSetChanged()
     }
 
-    private fun selectSecondDate(firstDate: GregorianCalendar?, secondDate: GregorianCalendar?) {
+    private fun selectSecondDate(
+        firstDate: GregorianCalendar?,
+        secondDate: GregorianCalendar?,
+        isSelect: Boolean = true
+    ) {
         secondDate?.apply {
             firstDate?.apply {
                 for (i in 7..48) {
@@ -222,7 +268,9 @@ class DateRentDialog : BaseDialogFragment() {
                         if (mYear > secondDate.get(Calendar.YEAR)) {
                             myListDates[i].isEnable = false
                         } else if (mYear == secondDate.get(Calendar.YEAR)) {
-                            handleSecondDateWhenEqualYear(firstDate, secondDate, i)
+                            handleSecondDateWhenEqualYear(firstDate, secondDate, i, isSelect)
+                        } else if (mYear < secondDate.get(Calendar.YEAR)) {
+                            handleSecondDateCaseLesser(i, isSelect)
                         }
                     }
                 }
@@ -230,10 +278,20 @@ class DateRentDialog : BaseDialogFragment() {
         }
     }
 
+    private fun handleSecondDateCaseLesser(
+        i: Int,
+        isSelect: Boolean
+    ) {
+        if (isSelect) {
+            myListDates[i].isSelected = true
+        }
+    }
+
     private fun handleSecondDateWhenEqualYear(
         firstDate: GregorianCalendar,
         secondDate: GregorianCalendar,
-        i: Int
+        i: Int,
+        isSelect: Boolean
     ) {
         if (mMonth - 1 > secondDate.get(Calendar.MONTH)) {
             myListDates[i].isEnable = false
@@ -247,7 +305,7 @@ class DateRentDialog : BaseDialogFragment() {
                     || mMonth - 1 > firstDate.get(Calendar.MONTH)
                     || myListDates[i].numberDate.toInt() >= firstDate.get(Calendar.DATE)
                 ) {
-                    if (myListDates[i].isEnable) {
+                    if (myListDates[i].isEnable && isSelect) {
                         myListDates[i].isSelected = true
                     }
                 } else {
@@ -258,7 +316,7 @@ class DateRentDialog : BaseDialogFragment() {
                 Calendar.MONTH
             )
         ) {
-            if (myListDates[i].isEnable) {
+            if (myListDates[i].isEnable && isSelect) {
                 myListDates[i].isSelected = true
             }
         } else {

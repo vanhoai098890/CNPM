@@ -8,4 +8,16 @@ class DateStatusResponse(
     val data: List<DateStatus>
 ) : CommonResponse()
 
-data class DateStatus(val day: Int, val status: Boolean)
+data class DateStatus(val day: Int, val status: Boolean) {
+
+    override fun equals(other: Any?): Boolean {
+        if (other is DateStatus) {
+            return day == other.day && status == other.status
+        }
+        return false
+    }
+
+    override fun hashCode(): Int {
+        return day
+    }
+}

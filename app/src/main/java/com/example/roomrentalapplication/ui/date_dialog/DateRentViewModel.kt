@@ -3,6 +3,7 @@ package com.example.roomrentalapplication.ui.date_dialog
 import android.annotation.SuppressLint
 import com.example.roomrentalapplication.data.AppConstant
 import com.example.roomrentalapplication.data.remote.api.model.date_rent.PriceRentResponse
+import com.example.roomrentalapplication.data.remote.api.model.request_info.RentRequest
 import com.example.roomrentalapplication.data.repositories.DateRentRepository
 import com.example.roomrentalapplication.extensions.FlowResult
 import com.example.roomrentalapplication.ui.base.viewmodel.BaseViewModel
@@ -24,7 +25,7 @@ class DateRentViewModel @Inject constructor(
     fun getDateStatusByRoomId(roomId: Int, month: Int, year: Int) =
         dateRentRepository.getDateStatusByRoomId(roomId, month, year)
 
-    fun getDateFurthest(roomId: Int, date: Date) =
+    fun getDateFurthest(roomId: Int, date: String) =
         dateRentRepository.getDateFurthestByRoomId(roomId, date)
 
     @SuppressLint("SimpleDateFormat")
@@ -37,5 +38,4 @@ class DateRentViewModel @Inject constructor(
             SimpleDateFormat(AppConstant.FORMAT_DATE).format(dateEnd.time)
         )
     }
-
 }

@@ -173,7 +173,7 @@
                     android:layout_height="@dimen/_44dp"
                     android:layout_weight="1"
                     android:enabled="@{data.stateEnablePayButton}"
-                    android:text="@string/v1_pay_now"
+                    android:text="@string/v1_rent"
                     android:textAllCaps="false"
                     android:textColor="@color/blackRussian" />
 
