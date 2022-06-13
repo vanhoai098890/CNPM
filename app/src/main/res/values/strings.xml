@@ -15,6 +15,7 @@
     <string name="v1_create_account">Create\nAccount</string>
     <string name="v1_name">Name</string>
     <string name="v1_email">Email</string>
+    <string name="v1_citizen_id">Citizen Id</string>
     <string name="v1_email_">Email:</string>
     <string name="v1_phone">Phone</string>
     <string name="v1_phone_">Phone:</string>
@@ -30,6 +31,7 @@
     <string name="v1_require_field_sign_up">* Requires username and password to be longer than 6 characters</string>
     <string name="v1_require_field_not_blank">* Requires each field to be not blank</string>
     <string name="v1_wrong_email">* Wrong email</string>
+    <string name="v1_wrong_citizen_id">* Wrong citizen id</string>
     <string name="v1_wrong_phone">* Wrong phone</string>
     <string name="v1_username_is_existed">* Username already existed</string>
     <string name="v1_let_go">Let\'s go</string>
@@ -101,7 +103,7 @@
     <string name="v1_price_day">Price/day:</string>
     <string name="v1_days_rent_title">Days rent:</string>
     <string name="v1_amount_title">Amount:</string>
-<!--    <string name="v1_price_days">%s₫</string>-->
+    <!--    <string name="v1_price_days">%s₫</string>-->
     <string name="v1_price_days">$%.1f</string>
     <string name="v1_date_rent">X %d</string>
     <string name="v1_night_rent">/ %d days</string>

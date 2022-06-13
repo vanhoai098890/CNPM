@@ -7,5 +7,8 @@ data class SignUpRequestDto(
     var email: String = AppConstant.EMPTY,
     var phoneNumber: String = AppConstant.EMPTY,
     var username: String = AppConstant.EMPTY,
-    var password: String = AppConstant.EMPTY
+    var password: String = AppConstant.EMPTY,
+    var citizenId: String = AppConstant.EMPTY,
+    var birthday: String = AppConstant.EMPTY,
+    var nationality: String = AppConstant.EMPTY
 )

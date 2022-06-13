@@ -56,6 +56,10 @@ fun TextView.displayErrorMessageSignUp(msg: Int) {
             text = context.getString(R.string.v1_wrong_email)
             View.VISIBLE
         }
+        SignUpViewModel.WRONG_CITIZEN -> {
+            text = context.getString(R.string.v1_wrong_citizen_id)
+            View.VISIBLE
+        }
         SignUpViewModel.WRONG_PHONE -> {
             text = context.getString(R.string.v1_wrong_phone)
             View.VISIBLE

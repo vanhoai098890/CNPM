@@ -12,3 +12,8 @@ fun String.validatePhone(): Boolean {
     val pattern = Pattern.compile(AppConstant.PHONE_PATTERN)
     return pattern.matcher(this).find()
 }
+
+fun String.validateCitizenId(): Boolean {
+    val pattern = Pattern.compile(AppConstant.CITIZEN_ID_PATTERN)
+    return pattern.matcher(this).find()
+}

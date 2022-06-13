@@ -103,6 +103,9 @@ class SignUpFragment : BaseFragment() {
             ibClearPhone.setOnClickListener {
                 clearInput(edtPhone)
             }
+            ibClearCitizenId.setSafeOnClickListener {
+                clearInput(edtCitizenId)
+            }
         }
     }
 }

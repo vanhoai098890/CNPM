@@ -16,6 +16,7 @@ object AppConstant {
     const val KEY_AUTHORIZATION = "Authorization"
     const val VALUE_AUTHORIZATION_PREFIX = "Bearer"
     const val EMAIL_PATTERN = "\\w+@\\w+(\\.\\w){1,2}"
+    const val CITIZEN_ID_PATTERN = "\\d{9,12}"
     const val PHONE_PATTERN = "0\\d{0,10}"
     const val ZERO = 0
     const val DEFAULT_INTERVAL = 1000L

@@ -12,6 +12,7 @@ import com.example.roomrentalapplication.utils.text_watcher.TextWatcherImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.launchIn
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,6 +26,7 @@ class SignUpViewModel @Inject constructor(
         const val USERNAME_EXISTED = 3
         const val REQUIRE_FIELD = 4
         const val REQUIRE_FIELD_NOT_BLANK = 5
+        const val WRONG_CITIZEN = 6
     }
 
     var isPasswordVisible = false
@@ -40,6 +42,14 @@ class SignUpViewModel @Inject constructor(
     val emailWatcherImpl = object : TextWatcherImpl() {
         override fun afterTextChanged(s: Editable?) {
             email.value = s.toString()
+            isShowError.value = NORMAL
+        }
+    }
+
+    val citizenId = MutableStateFlow("")
+    val citizenIdImpl = object : TextWatcherImpl() {
+        override fun afterTextChanged(s: Editable?) {
+            citizenId.value = s.toString()
             isShowError.value = NORMAL
         }
     }
@@ -76,6 +86,10 @@ class SignUpViewModel @Inject constructor(
             isShowError.value = WRONG_EMAIL
             return
         }
+        if (!citizenId.value.validateCitizenId()) {
+            isShowError.value = WRONG_CITIZEN
+            return
+        }
         if (!phone.value.validatePhone()) {
             isShowError.value = WRONG_PHONE
             return
@@ -89,7 +103,9 @@ class SignUpViewModel @Inject constructor(
                     email = email.value,
                     phoneNumber = phone.value,
                     username = username.value,
-                    password = password.value
+                    password = password.value,
+                    citizenId = citizenId.value,
+                    birthday = Date().getFormatString()
                 )
             )
                 .bindLoading(this)

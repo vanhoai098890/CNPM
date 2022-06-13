@@ -133,6 +133,47 @@
                         tools:ignore="RtlSymmetry" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutCitizenId"
+                    style="@style/myEditTextLayoutSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="36dp"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/v1_citizen_id"
+                    app:layout_constraintTop_toBottomOf="@id/layoutEmail">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtCitizenId"
+                        style="@style/myCustomEditText"
+                        textChangedListener="@{data.citizenIdImpl}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:maxLength="12"
+                        android:maxLines="1"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="40dp"
+                        android:textColor="@color/twilightBlue"
+                        tools:ignore="RtlSymmetry" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/ibClearCitizenId"
+                    goneUnless="@{data.citizenId.length()!=0}"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/bg_image_button_circle"
+                    android:src="@drawable/ic_clear_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/layoutCitizenId"
+                    app:layout_constraintRight_toRightOf="@id/layoutCitizenId"
+                    app:layout_constraintTop_toTopOf="@id/layoutCitizenId"
+                    app:tint="@color/twilightBlue"
+                    tools:ignore="ContentDescription" />
+
                 <ImageButton
                     android:id="@+id/ibClearEmail"
                     goneUnless="@{data.email.length()!=0}"
@@ -155,7 +196,7 @@
                     android:layout_marginHorizontal="36dp"
                     android:layout_marginTop="8dp"
                     android:hint="@string/v1_phone"
-                    app:layout_constraintTop_toBottomOf="@id/layoutEmail">
+                    app:layout_constraintTop_toBottomOf="@id/layoutCitizenId">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtPhone"
