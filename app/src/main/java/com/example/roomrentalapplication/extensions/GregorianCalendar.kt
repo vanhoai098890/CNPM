@@ -29,6 +29,10 @@ fun GregorianCalendar.getFormatString(pattern: String = AppConstant.FORMAT_DATE)
     return SimpleDateFormat(pattern).format(this.time)
 }
 
+fun GregorianCalendar.copy(): GregorianCalendar {
+    return GregorianCalendar(get(Calendar.YEAR), get(Calendar.MONTH), get(Calendar.DATE))
+}
+
 @SuppressLint("SimpleDateFormat")
 fun Date.getFormatString(pattern: String = AppConstant.FORMAT_DATE): String {
     return SimpleDateFormat(pattern).format(this.time)

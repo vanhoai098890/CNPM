@@ -3,6 +3,7 @@ package com.example.roomrentalapplication.ui.date_dialog
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -80,9 +81,10 @@ class DateRentDialog : BaseDialogFragment() {
                             }
                             selectSecondDate(
                                 firstDate,
-                                GregorianCalendar(date[0], date[1], date[2]),
+                                GregorianCalendar(date[0], date[1] - 1, date[2]),
                                 false
                             )
+                            adapter.notifyDataSetChanged()
                         }.launchIn(lifecycleScope)
                     }
                     SECOND_DATE -> {
@@ -237,7 +239,7 @@ class DateRentDialog : BaseDialogFragment() {
                     getParcelable<RoomItem>(ROOM_ITEM).let { roomItem ->
                         viewModel.getDateStatusByRoomId(roomItem?.roomId ?: 0, mMonth, mYear)
                             .onSuccess {
-                                val setData = HashSet<DateStatus>()
+                                val setData = LinkedHashSet<DateStatus>()
                                 it.data.forEachIndexed { _, dateStatus ->
                                     setData.add(dateStatus)
                                 }
@@ -265,12 +267,16 @@ class DateRentDialog : BaseDialogFragment() {
             firstDate?.apply {
                 for (i in 7..48) {
                     if (myListDates[i].numberDate != "") {
-                        if (mYear > secondDate.get(Calendar.YEAR)) {
-                            myListDates[i].isEnable = false
-                        } else if (mYear == secondDate.get(Calendar.YEAR)) {
-                            handleSecondDateWhenEqualYear(firstDate, secondDate, i, isSelect)
-                        } else if (mYear < secondDate.get(Calendar.YEAR)) {
-                            handleSecondDateCaseLesser(i, isSelect)
+                        when {
+                            mYear == secondDate.get(Calendar.YEAR) -> {
+                                handleSecondDateWhenEqualYear(firstDate, secondDate, i, isSelect)
+                            }
+                            mYear > secondDate.get(Calendar.YEAR) -> {
+                                myListDates[i].isEnable = false
+                            }
+                            mYear < secondDate.get(Calendar.YEAR) -> {
+                                handleSecondDateCaseLesser(i, isSelect)
+                            }
                         }
                     }
                 }

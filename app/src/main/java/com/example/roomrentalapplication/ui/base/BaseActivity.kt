@@ -74,6 +74,7 @@ abstract class BaseActivity : AppCompatActivity() {
                     if (!outRect.contains(ev.rawX.toInt(), ev.rawY.toInt())) {
                         viewTemp.clearFocus()
                         hideKeyboard(viewTemp)
+                        hideSystemUI(this)
                     }
                 }
             }

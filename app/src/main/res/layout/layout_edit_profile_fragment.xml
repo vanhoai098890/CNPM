@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.roomrentalapplication.ui.edit_profile.EditProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/toolbarId"
+            layout="@layout/layout_toolbar_common" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbarId">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/btnUpdateAvatar"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:elevation="@dimen/_6dp"
+                    android:focusable="true"
+                    android:padding="@dimen/_10dp"
+                    android:src="@drawable/ic_camera"
+                    app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
+                    app:layout_constraintRight_toRightOf="@id/ivAvatar"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/ivAvatar"
+                    bindImageAvatar="@{viewModel.stateCustomerProperty.customerId}"
+                    android:layout_width="@dimen/_120dp"
+                    android:layout_height="@dimen/_120dp"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="@dimen/_16dp"
+                    android:background="@drawable/ic_person"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutName"
+                    style="@style/myEditTextEditProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="36dp"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:hint="@string/v1_name"
+                    app:layout_constraintTop_toBottomOf="@id/ivAvatar">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:imeOptions="actionDone"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="40dp"
+                        android:text="@{viewModel.stateCustomerProperty.customerName}"
+                        tools:ignore="RtlSymmetry" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutPhone"
+                    style="@style/myEditTextEditProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="36dp"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:hint="@string/v1_phone"
+                    app:layout_constraintTop_toBottomOf="@id/layoutName">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="sans-serif-medium"
+                        android:imeOptions="actionDone"
+                        android:importantForAutofill="no"
+                        android:inputType="none|textNoSuggestions"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="40dp"
+                        android:text="@{viewModel.stateCustomerProperty.phoneNumber}"
+                        android:textColor="@color/gray"
+                        tools:ignore="RtlSymmetry" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutBirthDay"
+                    style="@style/myEditTextEditProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="36dp"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:hint="@string/v1_date_of_birth"
+                    app:layout_constraintTop_toBottomOf="@id/layoutPhone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtBirthDay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="false"
+                        android:drawableEnd="@drawable/ic_calendar_24"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="sans-serif-medium"
+                        android:imeOptions="actionDone"
+                        android:inputType="date"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:paddingStart="8dp"
+                        android:text="@{viewModel.stateCustomerProperty.birthday}"
+                        tools:ignore="RtlSymmetry" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutEmail"
+                    style="@style/myEditTextEditProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="36dp"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:hint="@string/v1_email"
+                    app:layout_constraintTop_toBottomOf="@id/layoutBirthDay">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:imeOptions="actionDone"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="40dp"
+                        android:text="@{viewModel.stateCustomerProperty.email}"
+                        tools:ignore="RtlSymmetry" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutCitizenId"
+                    style="@style/myEditTextEditProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="36dp"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:hint="@string/v1_citizen_id"
+                    app:layout_constraintTop_toBottomOf="@id/layoutEmail">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtCitizenId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:imeOptions="actionDone"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="40dp"
+                        android:text="@{viewModel.stateCustomerProperty.citizenId}"
+                        tools:ignore="RtlSymmetry" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/containerNationlity"
+                    style="@style/myEditTextEditProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="36dp"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:hint="@string/v1_nationality"
+                    app:layout_constraintTop_toBottomOf="@id/layoutCitizenId">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/layoutNational"
+                        bindTextNationality="@{viewModel.stateCustomerProperty.nationality}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="sans-serif-medium"
+                        android:imeOptions="actionDone"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="40dp"
+                        tools:ignore="RtlSymmetry" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/_20dp"
+                    android:layout_height="@dimen/_20dp"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:layout_marginEnd="@dimen/_8dp"
+                    android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                    app:layout_constraintBottom_toBottomOf="@id/containerNationlity"
+                    app:layout_constraintEnd_toEndOf="@id/containerNationlity"
+                    app:layout_constraintTop_toTopOf="@id/containerNationlity"
+                    tools:ignore="ContentDescription" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_36dp"
+            android:layout_marginTop="@dimen/_8dp"
+            android:layout_marginBottom="@dimen/_8dp"
+            android:text="@string/v1_check_info_edit_profile"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@id/btnSubmit" />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            style="@style/commonButtonCornerMainEditProfile"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_44dp"
+            android:layout_marginHorizontal="@dimen/_36dp"
+            android:layout_marginBottom="@dimen/_16dp"
+            android:text="@string/v1_submit"
+            android:textAllCaps="false"
+            android:textColor="@color/blackRussian"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

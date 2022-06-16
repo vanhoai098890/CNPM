@@ -11,5 +11,7 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Customize your theme here. -->
+        <item name="bottomSheetDialogTheme">@style/commonBottomSheetTheme</item>
+
     </style>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.roomrentalapplication.data.remote
 
 import com.example.roomrentalapplication.data.remote.api.model.CommonResponse
+import com.example.roomrentalapplication.data.remote.api.model.customer.CustomerProperty
 import com.example.roomrentalapplication.data.remote.api.model.customer.CustomerPropertyResponse
 import com.example.roomrentalapplication.data.remote.api.model.date_rent.DateFurthestResponse
 import com.example.roomrentalapplication.data.remote.api.model.date_rent.DateStatusResponse
@@ -37,6 +38,12 @@ interface ApiService {
 
     @GET("api/customer/{id}")
     suspend fun getCustomerById(@Path("id") customerId: Int): Response<CustomerPropertyResponse>
+
+    @PUT("api/customer/{id}")
+    suspend fun updateCustomerById(
+        @Path("id") customerId: Int,
+        @Body requestCustomer: CustomerProperty
+    ): Response<CommonResponse>
 
     @GET("api/properties/getByCityTypeName")
     suspend fun getRoomsByPropertyWithName(

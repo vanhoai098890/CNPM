@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40dp"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:paddingTop="@dimen/_10dp">
+
+        <TextView
+            android:id="@+id/tvNation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_8dp"
+            android:background="@drawable/bg_selector_text_view_nation"
+            app:drawableTint="@color/green"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="VietNam" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

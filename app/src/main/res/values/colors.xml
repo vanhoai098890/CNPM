@@ -16,6 +16,7 @@
     <color name="mako">#44474E</color>
     <color name="blue">#73BCE1</color>
     <color name="textGray">#E6FFFFFF</color>
+    <color name="gray">#808080</color>
     <color name="textDim">#C9CAC6</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="textHintColor">#9F9D9B</color>

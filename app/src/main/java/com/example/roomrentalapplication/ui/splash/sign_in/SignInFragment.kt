@@ -11,12 +11,12 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.roomrentalapplication.ui.MainActivity
 import com.example.roomrentalapplication.R
 import com.example.roomrentalapplication.data.AppConstant
 import com.example.roomrentalapplication.databinding.FragmentSignInBinding
 import com.example.roomrentalapplication.extensions.replaceFragment
 import com.example.roomrentalapplication.extensions.setSafeOnClickListener
+import com.example.roomrentalapplication.ui.MainActivity
 import com.example.roomrentalapplication.ui.base.BaseActivity
 import com.example.roomrentalapplication.ui.base.BaseFragment
 import com.example.roomrentalapplication.ui.splash.sign_up.SignUpFragment

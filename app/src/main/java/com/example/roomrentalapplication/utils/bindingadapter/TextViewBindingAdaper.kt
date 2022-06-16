@@ -96,6 +96,35 @@ fun TextView.bindTextUserName(name: String?) {
     text = tempText
 }
 
+@BindingAdapter("bindNation")
+fun TextView.bindNation(name: String?) {
+    var flagUpper = true
+    var tempText = ""
+    name?.apply {
+        forEachIndexed { _, name ->
+            if (flagUpper) {
+                tempText = "${tempText}${name.toUpperCase()}"
+            } else {
+                tempText = "${tempText}${name.toLowerCase()}"
+            }
+            flagUpper = name == ' '
+        }
+    }
+    text = tempText
+}
+
+@BindingAdapter("bindTextNationality")
+fun TextView.bindTextNationality(nationality: String?) {
+    text = if (nationality.isNullOrBlank()) {
+        setTextColor(resources.getColor(R.color.gray, null))
+        resources.getString(R.string.v1_nationality)
+    } else {
+        setTextColor(resources.getColor(R.color.blackRussian, null))
+        nationality
+    }
+    bindNation(text.toString())
+}
+
 @BindingAdapter("bindHtmlText")
 fun TextView.bindHtmlText(name: String?) {
     name?.apply {

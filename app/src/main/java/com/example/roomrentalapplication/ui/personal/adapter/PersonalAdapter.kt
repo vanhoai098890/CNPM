@@ -21,6 +21,7 @@ class PersonalAdapter : BaseListAdapter<PersonalFunctionStatic>() {
     }
 
     internal var onLogoutAction: () -> Unit = {}
+    internal var onClickItem: (String) -> Unit = {}
     internal var customerInfo: CustomerProperty? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseItemViewHolder {
@@ -86,9 +87,9 @@ class PersonalAdapter : BaseListAdapter<PersonalFunctionStatic>() {
 
         private fun initOnclickItem(name: String, binding: ItemPersonalContentFunctionBinding) {
             when (name) {
-                PersonalFunctionStatic.LOGOUT.name -> {
+                PersonalFunctionStatic.LOGOUT.name,PersonalFunctionStatic.PERSONAL.name -> {
                     binding.root.setSafeOnClickListener {
-                        onLogoutAction.invoke()
+                        onClickItem.invoke(name)
                     }
                 }
                 else -> {

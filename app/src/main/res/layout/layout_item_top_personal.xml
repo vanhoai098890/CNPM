@@ -18,9 +18,9 @@
         <ImageView
             android:id="@+id/ivAvatar"
             bindImageAvatar="@{data.customerId}"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="16dp"
+            android:layout_width="@dimen/_100dp"
+            android:layout_height="@dimen/_100dp"
+            android:layout_margin="@dimen/_16dp"
             android:background="@drawable/ic_baseline_account_circle_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

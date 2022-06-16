@@ -18,9 +18,9 @@ data class CustomerProperty(
     @SerializedName("citizenId")
     val citizenId: String? = null,
     @SerializedName("birthday")
-    val birthday: String? = null,
+    var birthday: String? = null,
     @SerializedName("nationality")
-    val nationality: String? = null,
+    var nationality: String? = null,
     @SerializedName("phoneNumber")
     val phoneNumber: String? = null,
 )

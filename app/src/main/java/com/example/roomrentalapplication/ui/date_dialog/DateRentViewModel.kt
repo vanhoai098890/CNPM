@@ -6,6 +6,7 @@ import com.example.roomrentalapplication.data.remote.api.model.date_rent.PriceRe
 import com.example.roomrentalapplication.data.remote.api.model.request_info.RentRequest
 import com.example.roomrentalapplication.data.repositories.DateRentRepository
 import com.example.roomrentalapplication.extensions.FlowResult
+import com.example.roomrentalapplication.extensions.copy
 import com.example.roomrentalapplication.ui.base.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -31,11 +32,12 @@ class DateRentViewModel @Inject constructor(
     @SuppressLint("SimpleDateFormat")
     fun getPrice(priceId: Int, dateStart: GregorianCalendar, dateEnd: GregorianCalendar):
             Flow<FlowResult<PriceRentResponse>> {
-        dateEnd.add(Calendar.DAY_OF_MONTH, 1)
+        val temp = dateEnd.copy()
+        temp.add(Calendar.DAY_OF_MONTH, 1)
         return dateRentRepository.getPriceRent(
             priceId,
             SimpleDateFormat(AppConstant.FORMAT_DATE).format(dateStart.time),
-            SimpleDateFormat(AppConstant.FORMAT_DATE).format(dateEnd.time)
+            SimpleDateFormat(AppConstant.FORMAT_DATE).format(temp.time)
         )
     }
 }

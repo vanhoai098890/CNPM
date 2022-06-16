@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roomrentalapplication.R
 import com.example.roomrentalapplication.databinding.FragmentPersonalBinding
 import com.example.roomrentalapplication.ui.base.BaseFragment
+import com.example.roomrentalapplication.ui.edit_profile.EditProfileFragment
 import com.example.roomrentalapplication.ui.personal.adapter.LogoutDialog
 import com.example.roomrentalapplication.ui.personal.adapter.PersonalAdapter
+import com.example.roomrentalapplication.ui.personal.adapter.PersonalFunctionStatic
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -23,8 +25,15 @@ class PersonalFragment() : BaseFragment() {
     private val viewModel: PersonalViewModel by viewModels()
     private val adapter by lazy {
         PersonalAdapter().apply {
-            onLogoutAction = {
-                logoutDialog.show(parentFragmentManager, null)
+            onClickItem = {
+                when (it) {
+                    PersonalFunctionStatic.LOGOUT.name -> {
+                        logoutDialog.show(parentFragmentManager, null)
+                    }
+                    PersonalFunctionStatic.PERSONAL.name -> {
+                        addNoNavigationFragment(EditProfileFragment())
+                    }
+                }
             }
             customerInfo = viewModel.getCustomerInfo()
         }
