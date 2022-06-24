@@ -81,11 +81,11 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/dialog_layout_failed.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/dialog_log_out.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/dialog_paying.xml" value="0.264" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/favourite_fragment.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/favourite_fragment.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/fragment_navigation_container.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/fragment_no_navigation_container.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/fragment_on_board.xml" value="0.2" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/fragment_personal.xml" value="0.1" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/fragment_personal.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/fragment_property.xml" value="0.128" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/fragment_received_detail.xml" value="0.176" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/fragment_received_request.xml" value="0.25" />
@@ -96,7 +96,7 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/fragment_sign_in.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/fragment_sign_up.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/fragment_splash.xml" value="0.2" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/item_layout_room.xml" value="0.176" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/item_layout_room.xml" value="0.4" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/item_personal_content_function.xml" value="0.475" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/layout_confirm_information.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/layout_date_rent_dialog.xml" value="0.25" />

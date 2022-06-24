@@ -55,6 +55,7 @@ class MainNavigationContainerFragment : BaseFragment() {
                         fragmentPagers
                     )
                 it.isUserInputEnabled = false
+                it.offscreenPageLimit = 1
             }
             bottomNavigation.let {
                 it.setOnItemSelectedListener { menuItem ->

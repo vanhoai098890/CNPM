@@ -116,4 +116,9 @@ interface ApiService {
         @Path("id") sellerId: Int,
     ): Response<ReceivedRequestItemResponse>
 
+    @GET("api/customers/{customerId}/saved_rooms")
+    suspend fun getFavouriteRoom(
+        @Path("customerId") customerId: Int,
+    ): Response<RoomResponse>
+
 }
