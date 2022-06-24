@@ -2,6 +2,7 @@ package com.example.roomrentalapplication.data.repositories
 
 import com.example.roomrentalapplication.data.remote.api.datasource.property.PropertyDataSourceImpl
 import com.example.roomrentalapplication.data.remote.api.model.property.PropertyItem
+import com.example.roomrentalapplication.data.remote.api.model.room.RoomInsertRequest
 import com.example.roomrentalapplication.extensions.safeFlow
 import okhttp3.MultipartBody
 import javax.inject.Inject
@@ -27,10 +28,23 @@ class PropertyRepository @Inject constructor(private val propertyDataSourceImpl:
         propertyDataSourceImpl.getDetailProperty(id)
     }
 
+    fun getPropertiesByCustomerId(
+        customerId: Int
+    ) = safeFlow {
+        propertyDataSourceImpl.getPropertiesById(customerId)
+    }
+
     fun insertProperty(
         customerId: PropertyItem,
         imagePart: List<MultipartBody.Part>
     ) = safeFlow {
         propertyDataSourceImpl.insertProperty(customerId, imagePart)
+    }
+
+    fun insertRoom(
+        roomWithPriceDto: RoomInsertRequest,
+        imagePart: List<MultipartBody.Part>
+    ) = safeFlow {
+        propertyDataSourceImpl.insertRoom(roomWithPriceDto, imagePart)
     }
 }

@@ -61,16 +61,16 @@ class AddPropertyViewModel @Inject constructor(
                 propertyRepository.insertProperty(
                     PropertyItem(
                         propertyName = stateValueNameProperty.value,
-                        propertyId = 1000 + Random().nextInt(100),
+                        propertyId = null,
                         propertyTypeId = statePropertyType.value,
                         description = stateDescription.value,
                         address = stateAddress.value,
                         city = stateCity.value,
                         customerId = this.customerId,
                         createDate = Date().getFormatString(AppConstant.FORMAT_DATE_V2),
-                        imageStorageId = 1000 + Random().nextInt(100),
+                        imageStorageId = null,
                         roomQuantity = 0,
-                        rating = 5.0,
+                        rating = null,
                         lat = 0.0,
                         lon = 0.0,
                         images = mutableListOf()

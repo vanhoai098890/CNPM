@@ -392,12 +392,26 @@
     <string name="v1_no_found_item">Item not found!!!</string>
     <string name="v1_favourite_rooms">Favourite rooms</string>
     <string name="v1_property_name">Property name</string>
+    <string name="v1_room_name">Room name</string>
     <string name="v1_property_type">Property type</string>
     <string name="v1_description">Description</string>
     <string name="v1_manage_property">Manage property</string>
     <string name="v1_images">Images</string>
     <string name="v1_address">Address</string>
     <string name="v1_city">City</string>
+    <string name="v1_room_size">Room size</string>
+    <string name="v1_capacity">Capacity</string>
+    <string name="v1_at_what_price">- At what price do you want to rent it</string>
+    <string name="v1_title_price_2">- Does the price include all utilities?</string>
+    <string name="v1_hourly_price">Hourly price</string>
+    <string name="v1_daily_price">Daily price</string>
+    <string name="v1_weekly_price">Weekly price</string>
+    <string name="v1_monthly_price">Monthly price</string>
+    <string name="v1_yes">Yes</string>
+    <string name="v1_no">No</string>
+    <string name="v1_how_much">How much is the deposit?</string>
+    <string name="v1_enter_deposit">Enter deposit</string>
+    <string name="v1_services">Services</string>
     <string-array name="property_type">
         <item>Motel</item>
         <item>Conference room</item>

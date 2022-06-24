@@ -44,6 +44,7 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/drawable/bg_bottom_nav.xml" value="0.185" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/drawable/bg_dot_indicator.xml" value="0.1845" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/drawable/bg_image_button_filter.xml" value="0.185" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/drawable/bg_progressbar.xml" value="0.1625" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/drawable/bg_rating_item.xml" value="0.1845" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/drawable/bg_rectangle_mercury_radius_6dp.xml" value="0.185" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/drawable/bg_selector_button_common_auth.xml" value="0.203" />
@@ -81,8 +82,9 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/drawable/selector_search_bottom_nav_anim.xml" value="0.185" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/activity_splash.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/add_room_fragment.xml" value="0.18115942028985507" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/add_room_fragment.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/dialog_layout_failed.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/dialog_loading.xml" value="0.18115942028985507" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/dialog_log_out.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/dialog_paying.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/favourite_fragment.xml" value="0.264" />
@@ -108,6 +110,7 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/layout_edit_profile_fragment.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/layout_image_fragment.xml" value="0.2" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/layout_item_add_image.xml" value="0.4" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/layout_item_add_service.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/layout_item_button_add_image.xml" value="0.1" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/layout_item_calendar_month.xml" value="0.2" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/RoomRentalApplication/app/src/main/res/layout/layout_item_date.xml" value="0.25" />

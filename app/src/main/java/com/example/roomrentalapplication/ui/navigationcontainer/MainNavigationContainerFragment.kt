@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.roomrentalapplication.R
 import com.example.roomrentalapplication.databinding.FragmentNavigationContainerBinding
 import com.example.roomrentalapplication.ui.add_property.AddPropertyFragment
+import com.example.roomrentalapplication.ui.add_room.AddRoomFragment
 import com.example.roomrentalapplication.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -76,6 +77,9 @@ class MainNavigationContainerFragment : BaseFragment() {
             }
             btnRoom.setOnClickListener {
                 animateFab()
+                root.post {
+                    addNoNavigationFragment(AddRoomFragment())
+                }
             }
             btnProperty.setOnClickListener {
                 animateFab()

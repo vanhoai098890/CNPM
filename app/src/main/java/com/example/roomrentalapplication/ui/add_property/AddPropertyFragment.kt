@@ -120,7 +120,6 @@ class AddPropertyFragment : BaseFragment() {
             launch {
                 viewModel.stateSuccess.collect {
                     if (it) {
-                        delay(500)
                         Toast.makeText(
                             requireContext(),
                             "Create property successfully!!",

@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
+import com.example.roomrentalapplication.R
 import com.example.roomrentalapplication.ui.base.BaseDialogFragment
 
 class LoadingDialog : BaseDialogFragment() {
@@ -33,6 +34,7 @@ class LoadingDialog : BaseDialogFragment() {
             }
             setCancelable(false)
             setCanceledOnTouchOutside(false)
+            setContentView(R.layout.dialog_loading)
         }
     }
 

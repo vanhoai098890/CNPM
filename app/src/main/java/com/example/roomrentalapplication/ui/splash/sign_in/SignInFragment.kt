@@ -19,6 +19,7 @@ import com.example.roomrentalapplication.extensions.setSafeOnClickListener
 import com.example.roomrentalapplication.ui.MainActivity
 import com.example.roomrentalapplication.ui.base.BaseActivity
 import com.example.roomrentalapplication.ui.base.BaseFragment
+import com.example.roomrentalapplication.ui.common.LoadingDialog
 import com.example.roomrentalapplication.ui.splash.sign_up.SignUpFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect

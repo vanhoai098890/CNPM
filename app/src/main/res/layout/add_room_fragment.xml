@@ -25,33 +25,6 @@
                 android:id="@+id/layoutToolbar"
                 layout="@layout/layout_toolbar_common" />
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutName"
-                style="@style/myEditTextEditProfile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="36dp"
-                android:layout_marginTop="@dimen/_16dp"
-                android:hint="@string/v1_property_name"
-                app:layout_constraintTop_toBottomOf="@id/layoutToolbar">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtPropertyName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_property"
-                    android:drawablePadding="@dimen/_8dp"
-                    android:drawableTint="@color/babyBlue"
-                    android:fontFamily="sans-serif-medium"
-                    android:imeOptions="actionDone"
-                    android:maxLength="24"
-                    android:maxLines="1"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="40dp"
-                    tools:ignore="RtlSymmetry" />
-            </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layoutTypeProperty"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -62,15 +35,15 @@
                 android:clickable="false"
                 android:drawableTint="@color/babyBlue"
                 android:focusable="false"
-                android:hint="@string/v1_property_type"
-                app:layout_constraintTop_toBottomOf="@id/layoutName">
+                android:hint="@string/v1_properties"
+                app:layout_constraintTop_toBottomOf="@id/layoutToolbar">
 
                 <AutoCompleteTextView
-                    android:id="@+id/edtPropertyType"
+                    android:id="@+id/edtPropertyName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:cursorVisible="false"
-                    android:drawableStart="@drawable/ic_type"
+                    android:drawableStart="@drawable/ic_property"
                     android:drawablePadding="@dimen/_8dp"
                     android:drawableTint="@color/babyBlue"
                     android:focusable="false"
@@ -86,6 +59,89 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutName"
+                style="@style/myEditTextEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="36dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:hint="@string/v1_room_name"
+                app:layout_constraintTop_toBottomOf="@id/layoutTypeProperty">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRoomName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_meeting_room_24"
+                    android:drawablePadding="@dimen/_8dp"
+                    android:drawableTint="@color/babyBlue"
+                    android:fontFamily="sans-serif-medium"
+                    android:imeOptions="actionDone"
+                    android:maxLength="24"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="40dp"
+                    android:text="@={model.stateRoomName}"
+                    tools:ignore="RtlSymmetry" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutSize"
+                style="@style/myEditTextEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="36dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:hint="@string/v1_room_size"
+                app:layout_constraintTop_toBottomOf="@id/layoutName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_room_size"
+                    android:drawablePadding="@dimen/_8dp"
+                    android:drawableTint="@color/babyBlue"
+                    android:fontFamily="sans-serif-medium"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:maxLength="24"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="40dp"
+                    android:text="@={model.stateRoomSize}"
+                    tools:ignore="RtlSymmetry" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutCapacity"
+                style="@style/myEditTextEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="36dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:hint="@string/v1_capacity"
+                app:layout_constraintTop_toBottomOf="@id/layoutSize">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editCapacity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_capacity"
+                    android:drawablePadding="@dimen/_8dp"
+                    android:drawableTint="@color/babyBlue"
+                    android:fontFamily="sans-serif-medium"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:maxLength="24"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="40dp"
+                    android:text="@={model.stateCapacity}"
+                    tools:ignore="RtlSymmetry" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layoutDescription"
                 style="@style/myEditTextEditProfile"
                 android:layout_width="match_parent"
@@ -93,7 +149,7 @@
                 android:layout_marginHorizontal="36dp"
                 android:layout_marginTop="@dimen/_8dp"
                 android:hint="@string/v1_description"
-                app:layout_constraintTop_toBottomOf="@id/layoutTypeProperty">
+                app:layout_constraintTop_toBottomOf="@id/layoutCapacity">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editDescription"
@@ -106,56 +162,165 @@
                     android:imeOptions="actionDone"
                     android:paddingStart="8dp"
                     android:paddingEnd="40dp"
+                    android:text="@={model.stateDescription}"
                     tools:ignore="RtlSymmetry" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutAddress"
-                style="@style/myEditTextEditProfile"
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16dp"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:text="@string/v1_price"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutDescription" />
+
+            <TextView
+                android:id="@+id/tvTitlePrice1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8dp"
+                android:text="@string/v1_at_what_price"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tvPrice"
+                app:layout_constraintTop_toBottomOf="@id/tvPrice" />
+
+            <EditText
+                android:id="@+id/edtHourPrice"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/v1_hourly_price"
+                android:inputType="number"
+                android:text="@={model.stateHourPrice}"
+                android:textSize="@dimen/_14sp"
+                app:layout_constraintEnd_toStartOf="@id/guideline9"
+                app:layout_constraintStart_toStartOf="@id/tvTitlePrice1"
+                app:layout_constraintTop_toBottomOf="@id/tvTitlePrice1"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/edtDailyPrice"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/v1_daily_price"
+                android:inputType="number"
+                android:text="@={model.stateDailyPrice}"
+                android:textSize="@dimen/_14sp"
+                app:layout_constraintEnd_toStartOf="@id/guideline9"
+                app:layout_constraintStart_toStartOf="@id/tvTitlePrice1"
+                app:layout_constraintTop_toBottomOf="@id/edtHourPrice"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/edtWeeklyPrice"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/v1_weekly_price"
+                android:inputType="number"
+                android:text="@={model.stateWeeklyPrice}"
+                android:textSize="@dimen/_14sp"
+                app:layout_constraintEnd_toStartOf="@id/guideline9"
+                app:layout_constraintStart_toStartOf="@id/tvTitlePrice1"
+                app:layout_constraintTop_toBottomOf="@id/edtDailyPrice"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/edtMonthlyPrice"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/v1_monthly_price"
+                android:inputType="number"
+                android:text="@={model.stateMonthlyPrice}"
+                android:textSize="@dimen/_14sp"
+                app:layout_constraintEnd_toStartOf="@id/guideline9"
+                app:layout_constraintStart_toStartOf="@id/tvTitlePrice1"
+                app:layout_constraintTop_toBottomOf="@id/edtWeeklyPrice"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/tvTitlePrice2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8dp"
+                android:text="@string/v1_title_price_2"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tvPrice"
+                app:layout_constraintTop_toBottomOf="@id/edtMonthlyPrice" />
+
+            <RadioGroup
+                android:id="@+id/radioButtonPrice"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintEnd_toStartOf="@id/guideline9"
+                app:layout_constraintStart_toStartOf="@id/tvTitlePrice2"
+                app:layout_constraintTop_toBottomOf="@id/tvTitlePrice2">
+
+                <RadioButton
+                    android:id="@+id/btnYes"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/v1_yes" />
+
+                <RadioButton
+                    android:id="@+id/btnNo"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/v1_no" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvTitlePrice3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8dp"
+                android:text="@string/v1_how_much"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tvPrice"
+                app:layout_constraintTop_toBottomOf="@id/radioButtonPrice" />
+
+            <EditText
+                android:id="@+id/edtDeposit"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/v1_enter_deposit"
+                android:inputType="number"
+                android:text="@={model.stateDeposit}"
+                android:textSize="@dimen/_14sp"
+                app:layout_constraintEnd_toStartOf="@id/guideline9"
+                app:layout_constraintStart_toStartOf="@id/tvTitlePrice1"
+                app:layout_constraintTop_toBottomOf="@id/tvTitlePrice3"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/tvServiceTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16dp"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:text="@string/v1_services"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edtDeposit" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvServices"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="36dp"
+                android:layout_marginHorizontal="@dimen/_16dp"
                 android:layout_marginTop="@dimen/_8dp"
-                android:hint="@string/v1_address"
-                app:layout_constraintTop_toBottomOf="@id/layoutDescription">
+                app:layout_constraintTop_toBottomOf="@id/tvServiceTitle" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_baseline_location_on_24"
-                    android:drawablePadding="@dimen/_8dp"
-                    android:drawableTint="@color/babyBlue"
-                    android:fontFamily="sans-serif-medium"
-                    android:imeOptions="actionDone"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="40dp"
-                    tools:ignore="RtlSymmetry" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutCity"
-                style="@style/myEditTextEditProfile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="36dp"
-                android:layout_marginTop="@dimen/_8dp"
-                android:hint="@string/v1_city"
-                app:layout_constraintTop_toBottomOf="@id/layoutAddress">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtCity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_baseline_location_city_24"
-                    android:drawablePadding="@dimen/_8dp"
-                    android:drawableTint="@color/babyBlue"
-                    android:fontFamily="sans-serif-medium"
-                    android:imeOptions="actionDone"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="40dp"
-                    tools:ignore="RtlSymmetry" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/tvImageTitle"
@@ -164,29 +329,36 @@
                 android:layout_marginHorizontal="@dimen/_16dp"
                 android:layout_marginVertical="@dimen/_16dp"
                 android:text="@string/v1_images"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layoutCity" />
+                app:layout_constraintTop_toBottomOf="@id/rvServices" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/gvImage"
+                android:id="@+id/rvImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_16dp"
-                android:layout_marginTop="@dimen/_16dp"
+                android:layout_marginHorizontal="@dimen/_16dp"
+                android:layout_marginTop="@dimen/_8dp"
                 app:layout_constraintTop_toBottomOf="@id/tvImageTitle" />
 
             <Button
-                android:id="@+id/btnCreateProperty"
+                android:id="@+id/btnCreateRoom"
                 style="@style/commonButtonCornerMain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/_16dp"
                 android:text="@string/v1_submit"
                 android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/gvImage" />
+                app:layout_constraintTop_toBottomOf="@id/rvImage" />
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>
