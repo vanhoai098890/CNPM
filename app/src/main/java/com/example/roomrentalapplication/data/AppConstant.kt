@@ -21,6 +21,11 @@ object AppConstant {
     const val ZERO = 0
     const val DEFAULT_INTERVAL = 1000L
     const val FORMAT_DATE = "yyyy-MM-dd"
+    const val APPROVED = "APPROVED"
+    const val PENDING = "PENDING"
+    const val PAYING = "PAYING"
+    const val CANCELED = "CANCELLED"
+    const val PAYPAL_CLIENT_ID = "Ab2rxhJpJbIr7_QfEZjzXEy1XNcbHQKLRxrzWSImZb_0TQHZ_A4t9f81p5eWvI02BBcz_bE34_bFCmqM"
 
     val COMPOSITE_VIEWPAGER = CompositePageTransformer().apply {
         addTransformer { page, position ->

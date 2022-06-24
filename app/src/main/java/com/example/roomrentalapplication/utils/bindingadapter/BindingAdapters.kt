@@ -26,6 +26,15 @@ fun View.goneUnless(isVisible: Boolean) {
     }
 }
 
+@BindingAdapter("invisibleUnless")
+fun View.invisibleUnless(isVisible: Boolean) {
+    visibility = if (isVisible) {
+        View.VISIBLE
+    } else {
+        View.INVISIBLE
+    }
+}
+
 @BindingAdapter("setShimmer")
 fun View.setShimmer(str: String?) {
     if (str.isNullOrBlank()) {

@@ -33,6 +33,7 @@
     <dimen name="_275dp">275dp</dimen>
 
     <!-- sp value -->
+    <dimen name="_14sp">14sp</dimen>
     <dimen name="_16sp">16sp</dimen>
     <dimen name="_18sp">18sp</dimen>
 

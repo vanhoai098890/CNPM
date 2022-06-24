@@ -39,4 +39,6 @@
     <color name="greyMain">#F8F8F8</color>
     <color name="dimGray">#646464</color>
     <color name="green">#42CAAE</color>
+    <color name="unicornSilver">#e8e8e8</color>
+    <color name="vaporBlue">#bdbdbd</color>
 </resources>

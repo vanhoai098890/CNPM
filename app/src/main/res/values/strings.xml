@@ -55,6 +55,7 @@
     <string name="v1_management">Management</string>
     <string name="v1_appointment">Appointment</string>
     <string name="v1_requests">Requests</string>
+    <string name="v1_request_detail">Request detail</string>
     <string name="v1_not_implemented_yet">Not implemented yet!!</string>
     <string name="v1_logout">Logout</string>
     <string name="v1_do_you_want_to_logout">Do you want to logout?</string>
@@ -110,6 +111,7 @@
     <string name="v1_rent">Rent</string>
     <string name="v1_request_information">Request information</string>
     <string name="v1_rent_request_information">Information</string>
+    <string name="v1_rent_request_information_customer">Customer information</string>
     <string name="v1_your_name">Your name:</string>
     <string name="v1_check_in">Check in:</string>
     <string name="v1_check_out">Check out:</string>
@@ -377,4 +379,14 @@
     <string name="v1_zimbabwe">ZIMBABWE</string>
     <string name="v1_check_info_edit_profile">Please check the information carefully because this information will affect the rental and rental process</string>
     <string name="v1_single_char">%s</string>
+    <string name="v1_send">Send</string>
+    <string name="v1_received">Received</string>
+    <string name="v1_approved">Approved</string>
+    <string name="v1_approve">Approve</string>
+    <string name="v1_paying">Paying</string>
+    <string name="v1_pending">Pending</string>
+    <string name="v1_canceled">Canceled</string>
+    <string name="v1_cancel">Cancel</string>
+    <string name="v1_no_found_item">Item not found!!!</string>
+    <string name="v1_">Item not found!!!</string>
 </resources>

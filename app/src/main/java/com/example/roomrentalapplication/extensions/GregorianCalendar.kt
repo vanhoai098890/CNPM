@@ -33,6 +33,11 @@ fun GregorianCalendar.copy(): GregorianCalendar {
     return GregorianCalendar(get(Calendar.YEAR), get(Calendar.MONTH), get(Calendar.DATE))
 }
 
+fun String.getGregorianCalendar(): GregorianCalendar {
+    val dates = this.split('-')
+    return GregorianCalendar(dates[0].toInt(), dates[1].toInt(), dates[2].toInt())
+}
+
 @SuppressLint("SimpleDateFormat")
 fun Date.getFormatString(pattern: String = AppConstant.FORMAT_DATE): String {
     return SimpleDateFormat(pattern).format(this.time)

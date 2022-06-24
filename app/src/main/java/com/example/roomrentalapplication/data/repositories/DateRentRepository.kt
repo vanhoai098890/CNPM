@@ -3,7 +3,6 @@ package com.example.roomrentalapplication.data.repositories
 import com.example.roomrentalapplication.data.remote.api.datasource.date_rent.DateRentDatasourceImpl
 import com.example.roomrentalapplication.data.remote.api.model.request_info.RentRequest
 import com.example.roomrentalapplication.extensions.safeFlow
-import java.util.*
 import javax.inject.Inject
 
 class DateRentRepository @Inject constructor(private val dateRentDatasourceImpl: DateRentDatasourceImpl) {
@@ -21,5 +20,21 @@ class DateRentRepository @Inject constructor(private val dateRentDatasourceImpl:
 
     fun confirmRentRoom(rentRequest: RentRequest) = safeFlow {
         dateRentDatasourceImpl.confirmRentRoom(rentRequest)
+    }
+
+    fun getReservation(id: Int) = safeFlow {
+        dateRentDatasourceImpl.getReservation(id)
+    }
+
+    fun updateReservationStatus(reservationId: Int, status: Int) = safeFlow {
+        dateRentDatasourceImpl.updateReservation(reservationId, status)
+    }
+
+    fun getSendReservation(customerId: Int) = safeFlow {
+        dateRentDatasourceImpl.getSendReservation(customerId)
+    }
+
+    fun getReceivedReservation(customerId: Int) = safeFlow {
+        dateRentDatasourceImpl.getReceivedReservation(customerId)
     }
 }

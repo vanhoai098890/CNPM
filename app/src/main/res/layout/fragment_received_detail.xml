@@ -6,47 +6,76 @@
     <data>
 
         <variable
-            name="data"
-            type="com.example.roomrentalapplication.data.remote.api.model.customer.CustomerProperty" />
+            name="model"
+            type="com.example.roomrentalapplication.ui.request.received_request.ReceivedDetailViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:clickable="true"
+        android:focusable="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/_0dp"
-            android:layout_height="@dimen/_0dp"
-            android:background="@drawable/bg_common_dialog_round_16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:1.8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.9">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/ivClose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_16dp"
-                android:src="@drawable/ic_close_local"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
+            <include
+                android:id="@+id/toolbarId"
+                layout="@layout/layout_toolbar_common"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvImage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_0dp"
+                android:layout_margin="@dimen/margin_16dp"
+                app:cardCornerRadius="@dimen/margin_16dp"
+                app:layout_constraintDimensionRatio="2:1"
+                app:layout_constraintTop_toBottomOf="@id/toolbarId">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        bindTextStatus="@{model.stateReceivedRequestItem.status}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8dp"
+                        android:background="@drawable/bg_item_status_request_gray_6dp"
+                        android:elevation="@dimen/_8dp"
+                        android:padding="@dimen/_5dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@id/ivRoom"
+                        app:layout_constraintTop_toTopOf="@id/ivRoom"
+                        tools:text="Approved"
+                        tools:textColor="@color/green" />
+
+                    <ImageView
+                        android:id="@+id/ivRoom"
+                        loadImageUri="@{model.stateReceivedRequestItem.image}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_luxury_houses"
+                        android:scaleType="centerCrop"
+                        tools:ignore="ContentDescription" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/tvInformationTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16dp"
-                android:text="@string/v1_rent_request_information"
+                android:text="@string/v1_rent_request_information_customer"
                 android:textColor="@color/blackRussian"
                 android:textSize="@dimen/_16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/cvImage" />
 
             <TextView
                 android:id="@+id/tvYourNameTitle"
@@ -61,7 +90,7 @@
 
             <TextView
                 android:id="@+id/tvYourName"
-                bindTextUserName="@{data.customerName}"
+                bindTextUserName="@{model.stateCustomerProperty.customerName}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_16dp"
@@ -94,7 +123,7 @@
                 android:clickable="false"
                 android:focusable="false"
                 android:padding="@dimen/_10dp"
-                android:text="@{data.email}"
+                android:text="@{model.stateCustomerProperty.email}"
                 app:layout_constraintTop_toBottomOf="@id/tvEmailTitle"
                 tools:text="vanhoai098890@gmail.com" />
 
@@ -119,7 +148,7 @@
                 android:clickable="false"
                 android:focusable="false"
                 android:padding="@dimen/_10dp"
-                android:text="@{data.phoneNumber}"
+                android:text="@{model.stateCustomerProperty.phoneNumber}"
                 app:layout_constraintTop_toBottomOf="@id/tvPhoneTitle"
                 tools:text="0367359816" />
 
@@ -162,6 +191,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_4dp"
+                android:text="@{model.stateDayRents}"
                 app:layout_constraintBottom_toBottomOf="@id/tvDayRentTitle"
                 app:layout_constraintStart_toStartOf="@id/guideline8"
                 tools:text="2" />
@@ -194,6 +224,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_4dp"
+                android:text="@{@string/v1_night_price(model.stateReservationItem.deposit)}"
                 app:layout_constraintBottom_toBottomOf="@id/tvAmountTitle"
                 app:layout_constraintStart_toStartOf="@id/guideline8"
                 tools:text="$11" />
@@ -226,6 +257,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_4dp"
+                android:text="@{model.stateReservationItem.startDate}"
                 app:layout_constraintBottom_toBottomOf="@id/tvCheckInTitle"
                 app:layout_constraintStart_toStartOf="@id/guideline8"
                 tools:text="$11" />
@@ -258,6 +290,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_4dp"
+                android:text="@{model.stateReservationItem.endDate}"
                 app:layout_constraintBottom_toBottomOf="@id/tvCheckOutTitle"
                 app:layout_constraintStart_toStartOf="@id/guideline8"
                 tools:text="$11" />
@@ -290,40 +323,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_4dp"
+                android:text="@{@string/v1_night_price(model.stateReservationItem.total)}"
                 app:layout_constraintBottom_toBottomOf="@id/tvDepositTitle"
                 app:layout_constraintStart_toStartOf="@id/guideline8"
                 tools:text="$11" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/_16dp"
-                android:text="@string/v1_confirm_checking_info"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toTopOf="@id/btnRequestInfo" />
-
-
-            <Button
-                android:id="@+id/btnRequestInfo"
-                style="@style/commonButtonCornerMain"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_44dp"
-                android:layout_marginBottom="@dimen/_8dp"
-                android:background="@drawable/bg_rectangle_mercury_radius_6dp"
-                android:elevation="@dimen/_8dp"
-                android:orientation="horizontal"
-                android:padding="@dimen/_10dp"
-                android:text="@string/v1_request_information"
-                android:textAllCaps="false"
-                android:textColor="@color/blackRussian"
-                app:layout_constraintBottom_toBottomOf="parent" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="427dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline8"
@@ -332,7 +336,42 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_begin="125dp" />
 
+            <LinearLayout
+                invisibleUnless="@{model.stateVisibleButton}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/_16dp"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@id/tvDeposit">
+
+                <Button
+                    android:id="@+id/btnApproved"
+                    style="@style/commonButtonCornerMain"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_8dp"
+                    android:layout_weight="1"
+                    android:text="@string/v1_approve"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btnCancel"
+                    style="@style/commonButtonCornerSecond"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:layout_weight="1"
+                    android:text="@string/v1_cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

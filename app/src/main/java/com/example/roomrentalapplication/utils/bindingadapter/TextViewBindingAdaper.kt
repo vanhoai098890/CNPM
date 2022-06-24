@@ -85,10 +85,10 @@ fun TextView.bindTextUserName(name: String?) {
     var tempText = ""
     name?.apply {
         forEachIndexed { _, name ->
-            if (flagUpper) {
-                tempText = "${tempText}${name.toUpperCase()}"
+            tempText = if (flagUpper) {
+                "${tempText}${name.uppercaseChar()}"
             } else {
-                tempText = "${tempText}${name}"
+                "${tempText}${name}"
             }
             flagUpper = name == ' '
         }
@@ -103,9 +103,9 @@ fun TextView.bindNation(name: String?) {
     name?.apply {
         forEachIndexed { _, name ->
             if (flagUpper) {
-                tempText = "${tempText}${name.toUpperCase()}"
+                tempText = "${tempText}${name.uppercaseChar()}"
             } else {
-                tempText = "${tempText}${name.toLowerCase()}"
+                tempText = "${tempText}${name.lowercaseChar()}"
             }
             flagUpper = name == ' '
         }
@@ -132,6 +132,30 @@ fun TextView.bindHtmlText(name: String?) {
             Html.fromHtml(name, FROM_HTML_MODE_LEGACY)
         } else {
             Html.fromHtml(name)
+        }
+    }
+}
+
+@BindingAdapter("bindTextStatus")
+fun TextView.bindTextStatus(status: String?) {
+    status?.apply {
+        when (status) {
+            AppConstant.PENDING -> {
+                text = resources.getString(R.string.v1_pending)
+                setTextColor(resources.getColor(R.color.dimGray, null))
+            }
+            AppConstant.APPROVED -> {
+                text = resources.getString(R.string.v1_approved)
+                setTextColor(resources.getColor(R.color.green, null))
+            }
+            AppConstant.CANCELED -> {
+                text = resources.getString(R.string.v1_canceled)
+                setTextColor(resources.getColor(R.color.alizarinCrimson, null))
+            }
+            AppConstant.PAYING -> {
+                text = resources.getString(R.string.v1_paying)
+                setTextColor(resources.getColor(R.color.orange, null))
+            }
         }
     }
 }

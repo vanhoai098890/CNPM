@@ -87,7 +87,7 @@ class PersonalAdapter : BaseListAdapter<PersonalFunctionStatic>() {
 
         private fun initOnclickItem(name: String, binding: ItemPersonalContentFunctionBinding) {
             when (name) {
-                PersonalFunctionStatic.LOGOUT.name,PersonalFunctionStatic.PERSONAL.name -> {
+                PersonalFunctionStatic.LOGOUT.name,PersonalFunctionStatic.PERSONAL.name, PersonalFunctionStatic.REQUEST.name -> {
                     binding.root.setSafeOnClickListener {
                         onClickItem.invoke(name)
                     }

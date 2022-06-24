@@ -8,8 +8,10 @@ import com.example.roomrentalapplication.data.remote.api.model.date_rent.DateSta
 import com.example.roomrentalapplication.data.remote.api.model.date_rent.PriceRentResponse
 import com.example.roomrentalapplication.data.remote.api.model.property.PropertyItemResponse
 import com.example.roomrentalapplication.data.remote.api.model.property.PropertyResponse
+import com.example.roomrentalapplication.data.remote.api.model.received_request.ReceivedRequestItemResponse
 import com.example.roomrentalapplication.data.remote.api.model.request_info.RentRequest
 import com.example.roomrentalapplication.data.remote.api.model.request_info.RentResponse
+import com.example.roomrentalapplication.data.remote.api.model.reservation.ReservationResponse
 import com.example.roomrentalapplication.data.remote.api.model.room.RoomResponse
 import com.example.roomrentalapplication.data.remote.api.model.room.RoomSavedRequest
 import com.example.roomrentalapplication.data.remote.api.model.signin.request.SignInRequestDto
@@ -87,10 +89,31 @@ interface ApiService {
         @Query("endDate") endDate: String,
     ): Response<PriceRentResponse>
 
-
     @POST("api/reservation")
     suspend fun requestInformation(
         @Body rentRequest: RentRequest
     ): Response<RentResponse>
+
+    @GET("api/reservation/{id}")
+    suspend fun getReservation(
+        @Path("id") id: Int
+    ): Response<ReservationResponse>
+
+    @PUT("api/reservation/reservation_status/{id}")
+    suspend fun updateStatusReservation(
+        @Path("id") id: Int,
+        @Query("reservationStatus") status: Int
+    ): Response<CommonResponse>
+
+
+    @GET("api/reservation/v2/allReservation_by_customer/{id}")
+    suspend fun getSendReservation(
+        @Path("id") id: Int,
+    ): Response<ReceivedRequestItemResponse>
+
+    @GET("api/reservation/v2/allReservation_by_seller/{id}")
+    suspend fun getReceivedReservation(
+        @Path("id") sellerId: Int,
+    ): Response<ReceivedRequestItemResponse>
 
 }

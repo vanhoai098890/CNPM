@@ -14,6 +14,7 @@ import com.example.roomrentalapplication.ui.edit_profile.EditProfileFragment
 import com.example.roomrentalapplication.ui.personal.adapter.LogoutDialog
 import com.example.roomrentalapplication.ui.personal.adapter.PersonalAdapter
 import com.example.roomrentalapplication.ui.personal.adapter.PersonalFunctionStatic
+import com.example.roomrentalapplication.ui.request.RequestFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -32,6 +33,9 @@ class PersonalFragment() : BaseFragment() {
                     }
                     PersonalFunctionStatic.PERSONAL.name -> {
                         addNoNavigationFragment(EditProfileFragment())
+                    }
+                    PersonalFunctionStatic.REQUEST.name -> {
+                        addNoNavigationFragment(RequestFragment())
                     }
                 }
             }
