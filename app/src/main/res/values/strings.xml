@@ -48,6 +48,8 @@
     <string name="v1_setting">Setting</string>
     <string name="v1_listing">Listing</string>
     <string name="v1_add_listing">Add listing</string>
+    <string name="v1_add_property">Add property</string>
+    <string name="v1_add_room">Add room</string>
     <string name="v1_bank">Bank Information</string>
     <string name="v1_security">Access and security</string>
     <string name="v1_transaction">Transaction history</string>
@@ -389,4 +391,18 @@
     <string name="v1_cancel">Cancel</string>
     <string name="v1_no_found_item">Item not found!!!</string>
     <string name="v1_favourite_rooms">Favourite rooms</string>
+    <string name="v1_property_name">Property name</string>
+    <string name="v1_property_type">Property type</string>
+    <string name="v1_description">Description</string>
+    <string name="v1_manage_property">Manage property</string>
+    <string name="v1_images">Images</string>
+    <string name="v1_address">Address</string>
+    <string name="v1_city">City</string>
+    <string-array name="property_type">
+        <item>Motel</item>
+        <item>Conference room</item>
+        <item>Hotel</item>
+        <item>Apartment</item>
+        <item>Homestay</item>
+    </string-array>
 </resources>

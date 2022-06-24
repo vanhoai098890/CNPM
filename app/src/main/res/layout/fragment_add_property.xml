@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.example.roomrentalapplication.ui.add_property.AddPropertyViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/_16dp">
+
+            <include
+                android:id="@+id/layoutToolbar"
+                layout="@layout/layout_toolbar_common" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutName"
+                style="@style/myEditTextEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="36dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:hint="@string/v1_property_name"
+                app:layout_constraintTop_toBottomOf="@id/layoutToolbar">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPropertyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_property"
+                    android:drawablePadding="@dimen/_8dp"
+                    android:drawableTint="@color/babyBlue"
+                    android:fontFamily="sans-serif-medium"
+                    android:imeOptions="actionDone"
+                    android:maxLength="24"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="40dp"
+                    android:text="@={model.stateValueNameProperty}"
+                    tools:ignore="RtlSymmetry" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutTypeProperty"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="36dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:clickable="false"
+                android:drawableTint="@color/babyBlue"
+                android:focusable="false"
+                android:hint="@string/v1_property_type"
+                app:layout_constraintTop_toBottomOf="@id/layoutName">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edtPropertyType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="false"
+                    android:drawableStart="@drawable/ic_type"
+                    android:drawablePadding="@dimen/_8dp"
+                    android:drawableTint="@color/babyBlue"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="sans-serif-medium"
+                    android:imeOptions="actionDone"
+                    android:inputType="none"
+                    android:maxLength="24"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="40dp"
+                    tools:ignore="LabelFor,RtlSymmetry" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutDescription"
+                style="@style/myEditTextEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="36dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:hint="@string/v1_description"
+                app:layout_constraintTop_toBottomOf="@id/layoutTypeProperty">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_description_24"
+                    android:drawablePadding="@dimen/_8dp"
+                    android:drawableTint="@color/babyBlue"
+                    android:fontFamily="sans-serif-medium"
+                    android:imeOptions="actionDone"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="40dp"
+                    android:text="@={model.stateDescription}"
+                    tools:ignore="RtlSymmetry" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutAddress"
+                style="@style/myEditTextEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="36dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:hint="@string/v1_address"
+                app:layout_constraintTop_toBottomOf="@id/layoutDescription">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_location_on_24"
+                    android:drawablePadding="@dimen/_8dp"
+                    android:drawableTint="@color/babyBlue"
+                    android:fontFamily="sans-serif-medium"
+                    android:imeOptions="actionDone"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="40dp"
+                    android:text="@={model.stateAddress}"
+                    tools:ignore="RtlSymmetry" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutCity"
+                style="@style/myEditTextEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="36dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:hint="@string/v1_city"
+                app:layout_constraintTop_toBottomOf="@id/layoutAddress">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_location_city_24"
+                    android:drawablePadding="@dimen/_8dp"
+                    android:drawableTint="@color/babyBlue"
+                    android:fontFamily="sans-serif-medium"
+                    android:imeOptions="actionDone"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="40dp"
+                    android:text="@={model.stateCity}"
+                    tools:ignore="RtlSymmetry" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvImageTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16dp"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:text="@string/v1_images"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutCity" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gvImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_16dp"
+                android:layout_marginTop="@dimen/_16dp"
+                app:layout_constraintTop_toBottomOf="@id/tvImageTitle" />
+
+            <Button
+                android:id="@+id/btnCreateProperty"
+                style="@style/commonButtonCornerMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:text="@string/v1_submit"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/gvImage" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

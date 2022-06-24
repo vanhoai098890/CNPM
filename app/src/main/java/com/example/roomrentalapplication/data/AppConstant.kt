@@ -21,6 +21,7 @@ object AppConstant {
     const val ZERO = 0
     const val DEFAULT_INTERVAL = 1000L
     const val FORMAT_DATE = "yyyy-MM-dd"
+    const val FORMAT_DATE_V2 = "yyyy-MM-dd'T'HH:mm"
     const val APPROVED = "APPROVED"
     const val PENDING = "PENDING"
     const val PAYING = "PAYING"

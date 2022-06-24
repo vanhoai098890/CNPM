@@ -6,6 +6,7 @@ import com.example.roomrentalapplication.data.remote.api.model.customer.Customer
 import com.example.roomrentalapplication.data.remote.api.model.date_rent.DateFurthestResponse
 import com.example.roomrentalapplication.data.remote.api.model.date_rent.DateStatusResponse
 import com.example.roomrentalapplication.data.remote.api.model.date_rent.PriceRentResponse
+import com.example.roomrentalapplication.data.remote.api.model.property.PropertyItem
 import com.example.roomrentalapplication.data.remote.api.model.property.PropertyItemResponse
 import com.example.roomrentalapplication.data.remote.api.model.property.PropertyResponse
 import com.example.roomrentalapplication.data.remote.api.model.received_request.ReceivedRequestItemResponse
@@ -18,6 +19,7 @@ import com.example.roomrentalapplication.data.remote.api.model.signin.request.Si
 import com.example.roomrentalapplication.data.remote.api.model.signin.response.SignInResponseDto
 import com.example.roomrentalapplication.data.remote.api.model.signup.request.SignUpRequestDto
 import com.example.roomrentalapplication.data.remote.api.model.status_saved.StatusSavedResponse
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -120,5 +122,11 @@ interface ApiService {
     suspend fun getFavouriteRoom(
         @Path("customerId") customerId: Int,
     ): Response<RoomResponse>
+
+    @Multipart
+    @POST("api/properties")
+    suspend fun insertProperty(
+        @Part("propertyDto") propertyDto: PropertyItem, @Part files: Array<MultipartBody.Part>
+    ): Response<CommonResponse>
 
 }

@@ -1,9 +1,12 @@
 package com.example.roomrentalapplication.data.remote.api.datasource.property
 
 import com.example.roomrentalapplication.data.remote.ApiService
+import com.example.roomrentalapplication.data.remote.api.model.CommonResponse
+import com.example.roomrentalapplication.data.remote.api.model.property.PropertyItem
 import com.example.roomrentalapplication.data.remote.api.model.property.PropertyItemResponse
 import com.example.roomrentalapplication.data.remote.api.model.property.PropertyResponse
 import com.example.roomrentalapplication.data.remote.exception.apiCall
+import okhttp3.MultipartBody
 import javax.inject.Inject
 
 class PropertyDataSourceImpl @Inject constructor(private val apiService: ApiService) :
@@ -25,6 +28,15 @@ class PropertyDataSourceImpl @Inject constructor(private val apiService: ApiServ
     ): PropertyResponse {
         return apiCall {
             apiService.getRoomsByPropertyWithName(city, typeId, name)
+        }
+    }
+
+    override suspend fun insertProperty(
+        customerId: PropertyItem,
+        imagePart: List<MultipartBody.Part>
+    ): CommonResponse {
+        return apiCall {
+            apiService.insertProperty(customerId, imagePart.toTypedArray())
         }
     }
 }
