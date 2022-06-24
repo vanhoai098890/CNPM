@@ -7,6 +7,7 @@ import com.example.roomrentalapplication.data.local.LoginSessionManager
 import com.example.roomrentalapplication.data.remote.api.model.customer.CustomerProperty
 import com.example.roomrentalapplication.data.remote.api.model.property.PropertyItem
 import com.example.roomrentalapplication.data.repositories.PropertyRepository
+import com.example.roomrentalapplication.extensions.bindLoading
 import com.example.roomrentalapplication.extensions.getFormatString
 import com.example.roomrentalapplication.extensions.onError
 import com.example.roomrentalapplication.extensions.onSuccess
@@ -75,7 +76,7 @@ class AddPropertyViewModel @Inject constructor(
                         images = mutableListOf()
                     ),
                     temp
-                ).onSuccess {
+                ).bindLoading(this@AddPropertyViewModel).onSuccess {
                     stateSuccess.value = true
                 }.onError {
                     stateErrorSubmit.value = true

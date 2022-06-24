@@ -25,5 +25,10 @@ data class RoomItem(
     val size: String?,
     val capacity: String?,
     val images: List<ImageItem>?,
-    val description: String?
+    val description: String?,
+    val services: List<ServiceItem>?
 ) : Parcelable
+
+@Parcelize
+data class ServiceItem(var serviceId: Int, val serviceName: String?, val icon: String?) :
+    Parcelable

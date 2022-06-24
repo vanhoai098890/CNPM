@@ -93,6 +93,13 @@
                 app:layout_constraintStart_toStartOf="@id/tvRoomName"
                 app:layout_constraintTop_toBottomOf="@id/tvRoomName" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvService"
+                android:layout_marginHorizontal="@dimen/_16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailService" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
@@ -138,10 +145,10 @@
                     style="@style/commonButtonCornerMain"
                     android:layout_width="@dimen/_0dp"
                     android:layout_height="@dimen/_44dp"
-                    android:textColor="@color/blackRussian"
                     android:layout_weight="1"
                     android:text="@string/v1_book_now"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:textColor="@color/blackRussian" />
 
             </LinearLayout>
 

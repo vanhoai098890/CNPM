@@ -13,7 +13,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.roomrentalapplication.R
-import com.example.roomrentalapplication.data.AppConstant
 import com.example.roomrentalapplication.databinding.FragmentAddPropertyBinding
 import com.example.roomrentalapplication.extensions.setSafeOnClickListener
 import com.example.roomrentalapplication.ui.base.BaseFragment
@@ -23,7 +22,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.io.File
-import java.net.URI
 
 @AndroidEntryPoint
 class AddPropertyFragment : BaseFragment() {
@@ -132,6 +130,11 @@ class AddPropertyFragment : BaseFragment() {
                     }
                 }
             }
+            launch {
+                viewModel.loadingState().collect {
+                    handleShowLoadingDialog(it)
+                }
+            }
         }
     }
 
@@ -145,7 +148,7 @@ class AddPropertyFragment : BaseFragment() {
                 res = cursor.getString(index)
             }
             cursor.close()
-        }?: kotlin.run {
+        } ?: kotlin.run {
             res = contentUri.path
         }
         return res

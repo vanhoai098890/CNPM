@@ -13,31 +13,31 @@ class SearchMainViewModel @Inject constructor() : BaseViewModel() {
         listOf(
             ItemData(
                 "https://roomlessrent.com/assets/imgs/home/luxury_houses.jpg",
-                "Luxury Houses",
+                "Motel",
                 " Details and finishes of excellence, unique properties complete with every service. ",
                 1
             ),
             ItemData(
                 "https://roomlessrent.com/assets/imgs/home/premium_houses.jpg",
-                "Premium Houses",
+                "Conference room",
                 " High-level, recently renovated properties in central locations. Perfect solutions for enjoying every city. ",
                 2
             ),
             ItemData(
                 "https://roomlessrent.com/assets/imgs/home/business_stays.jpg",
-                "Business Stays",
+                "Hotel",
                 " The best properties for your working stays. Spaces designed to make smart working as easy as possible with personal workspaces isolated from the rest of the house. ",
                 3
             ),
             ItemData(
                 "https://roomlessrent.com/assets/imgs/home/family_houses.jpg",
-                "Family houses",
+                "Apartment",
                 " Large size, family-friendly spaces, facilities for children. Located in residential areas, convenient for travelling and reaching the main infrastructures. ",
                 4
             ),
             ItemData(
                 "https://roomlessrent.com/assets/imgs/home/student_housing.jpg",
-                "Selected Student Housing",
+                "HomeStay",
                 " Excellent flats and rooms for students, located in the main university areas, single or shared only with peers. Perfect properties to live the university experience and not think about the rest. ",
                 5
             )

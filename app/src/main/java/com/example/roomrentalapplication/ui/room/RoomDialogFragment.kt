@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.roomrentalapplication.R
 import com.example.roomrentalapplication.data.AppConstant
@@ -20,6 +21,7 @@ import com.example.roomrentalapplication.ui.base.BaseFragment
 import com.example.roomrentalapplication.ui.common.ImageFragment
 import com.example.roomrentalapplication.ui.date_dialog.DateRentDialog
 import com.example.roomrentalapplication.ui.property_fragment.adapter.PropertyImageAdapter
+import com.example.roomrentalapplication.ui.room.adapter.ServiceAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -33,6 +35,9 @@ class RoomDialogFragment : BaseDialogFragment() {
     private lateinit var animSelect: Animation
     private var totalSizeImage: Int? = null
     private lateinit var dateRentDialog: DateRentDialog
+    private val serviceAdapter: ServiceAdapter by lazy {
+        ServiceAdapter()
+    }
 
     override fun setContentDialog(dialog: Dialog) {
         dialog.apply {
@@ -92,6 +97,13 @@ class RoomDialogFragment : BaseDialogFragment() {
                     btnBook.setSafeOnClickListener {
                         dismiss()
                         dateRentDialog.show(parentFragmentManager, null)
+                    }
+                    rvService.apply {
+                        layoutManager = GridLayoutManager(requireContext(), 2)
+                        adapter = serviceAdapter
+                        roomItem.services?.apply {
+                            serviceAdapter.submitList(roomItem.services)
+                        }
                     }
                 }
                 lifecycleScope.launchWhenStarted {
